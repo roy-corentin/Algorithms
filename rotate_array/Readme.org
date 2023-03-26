@@ -1,0 +1,93 @@
+#+title: Rotate Array
+
+* PROBLEM
+Given an integer array =nums=, rotate the array to the right by =k= steps, where =k= is non-negative.
+
+** Example 1
+#+begin_src
+*Input*: nums = [1,2,3,4,5,6,7], k = 3
+*Output*: [5,6,7,1,2,3,4]
+*Explanation*:
+rotate 1 steps to the right: [7,1,2,3,4,5,6]
+rotate 2 steps to the right: [6,7,1,2,3,4,5]
+rotate 3 steps to the right: [5,6,7,1,2,3,4]
+#+end_src
+
+** Example 2
+#+begin_src
+*Input*: nums = [-1,-100,3,99], k = 2
+*Output*: [3,99,-1,-100]
+*Explanation*:
+rotate 1 steps to the right: [99,-1,-100,3]
+rotate 2 steps to the right: [3,99,-1,-100]
+#+end_src
+
+* SOLVING
+We'll use the Two Pointers method
++ TimeComplexity - O(N)
++ SpaceComplexity - O(1)
+
+#+begin_quote
+k must be equal k modulo array length, otherwise ERROR !!
+#+end_quote
+** Steps
+*** Place Your Pointers
++ Left Pointer to the parameter =k= - 1 = 3 | Because first element at 0
++ Right Pointer to the last element =nums.size() - 1= = 6
+#+begin_src text
+       L           R
+       ↓           ↓
+[1, 2, 3, 4, 5, 6, 7]
+#+end_src
+
+*** Swap And Move
++ L = 3, R = 6%7
+#+begin_src text
+       L           R
+       ↓           ↓
+[1, 2, 3, 4, 5, 6, 7]
+#+end_src
+#+begin_src text
+       L           R
+       ↓           ↓
+[1, 2, 3, 4, 5, 6, 7]
+#+end_src
+eadme
+
+** Code
+#+begin_src cpp
+class Solution {
+public:
+  void rotate(vector<int> &nums, int k) {
+    int size = nums.size();
+
+    // Very Important
+    k = k % size;
+    int last = size - k;
+    int leftPtr = last, rightPtr = size - 1;
+
+    if (size == 1)
+      return;
+
+    // First, Reverse Right Part
+    for (; leftPtr <= rightPtr; leftPtr++) {
+      swap(nums[leftPtr], nums[rightPtr]);
+      rightPtr--;
+    }
+
+    // Second, Reverse Left Part
+    rightPtr = last - 1;
+    for (leftPtr = 0; leftPtr <= rightPtr; leftPtr++) {
+      swap(nums[leftPtr], nums[rightPtr]);
+      rightPtr--;
+    }
+
+    // Reverse Array
+    rightPtr = size - 1;
+    for (leftPtr = 0; leftPtr <= rightPtr; leftPtr++) {
+      swap(nums[leftPtr], nums[rightPtr]);
+      rightPtr--;
+    }
+  }
+};
+#+end_src
