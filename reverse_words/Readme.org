@@ -1,0 +1,60 @@
+#+title: Reverse Words
+
+* PROBLEM
+Given a string =s=, reverse the order of characters in each word within a sentence while still preserving whitespace and initial word order.
+
+** Example1
+#+begin_src markdown
+*Input*: s = "Let's take LeetCode contest"
+*Output*: "s'teL ekat edoCteeL tsetnoc"
+#+end_src
+
+** Example2
+#+begin_src markdown
+*Input*: s = "God Ding"
+*Output*: "diG gniD"
+#+end_src
+
+** Constraints
++ =1<=s.length<=5*104=
++ =s= contains printable ASCII characters.
++ =s= does not contain any leading or trailing spaces.
++ There is at least one word in =s=.
++ All the words in =s= are separated by a single space.
+
+* SOLVING
+we'll use the Two Pointers method
+** Steps
++ Left and Right Pointer begin at 0
++ Loop until Right Pointer at the last element:
+  - Move Right Pointer until the Right+1 = ' ' (space)
+  - Reverse the word from Left and Right Pointer
+** Code
+#+begin_src cpp
+class Solution {
+public:
+  string reverseWords(string s) {
+    int rightPtr = 0;
+    int leftPtr = 0;
+    int size = s.size();
+
+    while (rightPtr < size) {
+      while (rightPtr + 1 < size && s[rightPtr + 1] != ' ')
+        rightPtr++;
+      reverseString(s, leftPtr, rightPtr);
+      rightPtr += 2;
+      leftPtr = rightPtr;
+    }
+    return s;
+  }
+
+private:
+  void reverseString(string &s, int leftPtr, int rightPtr) {
+    while (leftPtr < rightPtr) {
+      swap(s[leftPtr], s[rightPtr]);
+      leftPtr++;
+      rightPtr--;
+    }
+  }
+};
+#+end_src
