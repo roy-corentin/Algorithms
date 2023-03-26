@@ -1,0 +1,111 @@
+#+title: Square Of A Sorted Array
+
+* PROBLEM
+Given an integer array nums sorted in non-decreasing order, return an array of the squares of each number sorted in non-decreasing order
+
+*Follow up*: Squaring each element and sorting the new array is very trivial, could you find an O(n) solution using a different approach?
+
+** Example1
+#+begin_src org
+*Input*: nums = [-4,-1,0,3,10]
+*Output*: [0,1,9,16,100]
+*Explanation*: After squaring, the array becomes [16,1,0,9,100].
+After sorting, it becomes [0,1,9,16,100].
+#+end_src
+
+** Example 2
+#+begin_src org
+*Input*: nums = [-7,-3,2,3,11]
+*Output*: [4,9,9,49,121]
+#+end_src
+
+* SOLVING
+We will use Two Pointers technique. Follow this steps:
+
+** Steps
+1. Find the first positive number
+2. Put the positive Pointer on this number and the negative Pointer on the element before
+3. Now compare the square value at the two pointer and push to the vector answer the smallest
+4. Finally push the last element if there is
+
+*** Move The Pointer To The First Positive Number
+#+begin_src text
+ R
+ ↓
+[-5, -2, -1, 0, 4, 6]
+      R
+      ↓
+[-5, -2, -1, 0, 4, 6]
+          R
+          ↓
+[-5, -2, -1, 0, 4, 6]
+             R
+             ↓
+[-5, -2, -1, 0, 4, 6]
+#+end_src
+
+*** Compare The Negative And Positive Number At The Same Time
+#+begin_src text
+                 ↓  ↓
+list = [-5, -2, -1, 0, 4, 6]
+result = [0]
+                 ↓     ↓
+list = [-5, -2, -1, 0, 4, 6]
+result = [0, 1]
+             ↓         ↓
+list = [-5, -2, -1, 0, 4, 6]
+result = [0, 1, 4]
+         ↓             ↓
+list = [-5, -2, -1, 0, 4, 6]
+result = [0, 1, 4, 16]
+         ↓             ↓
+list = [-5, -2, -1, 0, 4, 6]
+result = [0, 1, 4, 16, 25]
+#+end_src
+
+*** Finish By Adding The Last Positive Or Negative Numbers
+#+begin_src text
+                          ↓
+list = [-5, -2, -1, 0, 4, 6]
+result = [0, 1, 4, 16, 25, 26]
+#+end_src
+
+** Code
+#+begin_src cpp
+class Solution {
+public:
+  vector<int> sortedSquares(vector<int> &nums) {
+    int n = nums.size();
+    vector<int> ans;
+    int posItr = 0, negItr = -1;
+    int i = 0;
+
+    // find the first positive number and place the pointers
+    for (int i; i<=n && nums[i] < 0; i++)
+      posItr++;
+    negItr = posItr - 1;
+
+    // Compare each square and move the pointer
+    while (negItr >= 0 && posItr <= n) {
+      int sqrNeg = nums[negItr] * nums[negItr];
+      int sqrPos = nums[posItr] * nums[posItr];
+
+      if (sqrNeg <= sqrPos) {
+        ans[i++] = sqrNeg
+        negItr--;
+      } else {
+        ans[i++] = sqrPos
+        posItr++;
+      }
+    }
+
+    // if there is more negnumber or posnumber add them to the list
+    for (;negItr >= 0; negItr--)
+      ans[i++] = nums[negItr] * nums[negItr]
+    for (;posItr <= n; posItr++)
+      ans[i++] = nums[posItr] * nums[posItr]
+    return answer;
+  }
+};
+#+end_src
+
