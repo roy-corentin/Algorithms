@@ -8,7 +8,7 @@
 Use of Binary Search method.
 
 1. This code will return the index 2, where the target already is
-2. This code will return the index 1 where the target should
+2. This code will return the index 1 where the target should be
 
 ** Steps
 + Place Left Pointer at 0 and Right Pointer to the last element
