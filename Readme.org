@@ -5,4 +5,8 @@ This repository contains a collection of algorithms I've written to solve proble
 
 Each algorithm is implemented in a separate directory, with a brief explanation of the problem it solves, the approach taken to solve it and the code that I used to solve the problem.
 
+#+begin_quote
+I am French 🇫🇷. Please excuse my English error in the writing 🙏.
+#+end_quote
+
 Have fun !!
