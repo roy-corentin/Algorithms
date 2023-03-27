@@ -1,5 +1,14 @@
 #+title: Reverse Words
 
+* TABLE OF CONTENT :TOC:
+- [[#problem][PROBLEM]]
+  - [[#example1][Example1]]
+  - [[#example2][Example2]]
+  - [[#constraints][Constraints]]
+- [[#solving][SOLVING]]
+  - [[#steps][Steps]]
+  - [[#code][Code]]
+
 * PROBLEM
 Given a string =s=, reverse the order of characters in each word within a sentence while still preserving whitespace and initial word order.
 

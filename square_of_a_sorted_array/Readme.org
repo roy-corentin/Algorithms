@@ -1,5 +1,13 @@
 #+title: Square Of A Sorted Array
 
+* TABLE OF CONTENT :TOC:
+- [[#problem][PROBLEM]]
+  - [[#example1][Example1]]
+  - [[#example-2][Example 2]]
+- [[#solving][SOLVING]]
+  - [[#steps][Steps]]
+  - [[#code][Code]]
+
 * PROBLEM
 Given an integer array nums sorted in non-decreasing order, return an array of the squares of each number sorted in non-decreasing order
 

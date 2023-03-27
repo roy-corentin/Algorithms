@@ -1,5 +1,11 @@
 #+title: SubRectangleQueries
 
+* TABLE OF CONTENT :TOC:
+- [[#problem][PROBLEM]]
+- [[#solution][SOLUTION]]
+  - [[#steps][Steps]]
+  - [[#code][Code]]
+
 * PROBLEM
 Implement the class =SubrectangleQueries= which receives a =rows x cols= rectangle as a matrix of integers in the constructor and supports two methods:
 

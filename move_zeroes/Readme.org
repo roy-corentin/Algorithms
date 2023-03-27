@@ -1,5 +1,14 @@
 #+title: Move Zeroes
 
+* TABLE OF CONTENT :TOC:
+- [[#problem][PROBLEM]]
+  - [[#example1][Example1]]
+  - [[#example2][Example2]]
+  - [[#constraints][Constraints]]
+- [[#solving][SOLVING]]
+  - [[#code][Code]]
+  - [[#each-steps][Each Steps]]
+
 * PROBLEM
 Given an integer array =nums=, move all =0='s to the end of it while maintaining the relative order of the non-zero elements.
 

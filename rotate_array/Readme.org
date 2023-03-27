@@ -1,5 +1,13 @@
 #+title: Rotate Array
 
+* TABLE OF CONTENT :TOC:
+- [[#problem][PROBLEM]]
+  - [[#example-1][Example 1]]
+  - [[#example-2][Example 2]]
+- [[#solving][SOLVING]]
+  - [[#steps][Steps]]
+  - [[#code][Code]]
+
 * PROBLEM
 Given an integer array =nums=, rotate the array to the right by =k= steps, where =k= is non-negative.
 
