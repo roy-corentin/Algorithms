@@ -75,7 +75,7 @@ We keep the same approach or almost.. we'll use memoization !!
 
 *** Steps
 + First of all we have to return if we are at the end. =recursive end=
-+ Check if int the =memo= this position is already compute
++ Check if in the =memo= this position is already compute
 + Then get the =Right= and =Bottom= neighboor by calling the recursive method with =m+1= or =n+1=
 + Add in the =memo= the actual =value= of your grid element =+= the =mininum between the right and bottom neighboor=
 + And Then return the memo value
