@@ -1,0 +1,135 @@
+#+title: Minimum Path Sum
+
+* PROBLEM
+Given a =m x n= =grid= filled with non-negative numbers, find a path from top left to bottom right, which minimizes the sum of all numbers along its path.
+
+*Note*: You can only move either down or right at any point in time.
+
+** Example
++-+-+-+
+|1|3|1|
++-+-+-+
+|1|5|1|
++-+-+-+
+|4|2|1|
++-+-+-+
+
+#+begin_src markdown
+*Input*: grid = [[1,3,1],[1,5,1],[4,2,1]]
+*Output*: 7
+Explanation: Because the path 1 → 3 → 1 → 1 → 1 minimizes the sum.
+#+end_src
+
+** Constraints
++ =m==grid.length=
++ =n==grid[i].length=
++ =1<=m, n<=200=
++ =0<=grid[i][j]<=100=
+
+* SOLUTION
+We'll use Dynamic Programming method.
+
+** First Approach
+*** Steps
++ First of all we have to return if we are at the end. =recursive end=
++ Then get the =Right= and =Bottom= neighboor by calling the recursive method with =m+1= or =n+1=
++ Then return the actual =value= of your grid element =+= the =mininum between the right and bottom neighboor=
+
+*** Code
+#+begin_src cpp
+class Solution {
+public:
+  int minPathSum(vector<vector<int>> &grid) {
+    nb_rows = grid.size() - 1;
+    nb_cols = grid[0].size() - 1;
+    return dynamicPathSum(grid, 0, 0);
+  }
+
+private:
+  int nb_rows;
+  int nb_cols;
+
+  int dynamicPathSum(vector<vector<int>> &grid, int m, int n) {
+    // Equal to 1e9 to not compromise the min() method
+    int right = 1e9;
+    int bottom = 1e9;
+
+    // If it's the end of the grid return this value, end of recursive
+    if (m == nb_rows && n == nb_cols)
+      return grid[m][n];
+
+    // If there is neighboors, recursive on them
+    if (n < nb_cols)
+      right = dynamicPathSum(grid, m, n + 1);
+    if (m < nb_rows)
+      bottom = dynamicPathSum(grid, m + 1, n);
+
+    // The shortest path is actual value + the mininum between right and bottom
+    // neighboor
+    return grid[m][n] + min(right, bottom);
+  }
+};
+#+end_src
+
+*** Conclusion
+This code *works* !! BUT it's not *fast enough !*
+
+** Second Approach
+We keep the same approach or almost.. we'll use memoization !!
+
+*** Steps
++ First of all we have to return if we are at the end. =recursive end=
++ Check if int the =memo= this position is already compute
++ Then get the =Right= and =Bottom= neighboor by calling the recursive method with =m+1= or =n+1=
++ Add in the =memo= the actual =value= of your grid element =+= the =mininum between the right and bottom neighboor=
++ And Then return the memo value
+
+*** Code
+#+begin_src cpp
+class Solution {
+public:
+  int minPathSum(vector<vector<int>> &grid) {
+    // Initialize the memo with the good size
+    nb_rows = grid.size() - 1;
+    nb_cols = grid[0].size() - 1;
+    memo = vector<vector<int>>(nb_rows + 1, vector<int>(nb_cols + 1));
+    return dynamicPathSum(grid, 0, 0);
+  }
+
+private:
+  // The memo
+  vector<vector<int>> memo;
+
+  int nb_rows;
+  int nb_cols;
+
+  int dynamicPathSum(vector<vector<int>> &grid, int m, int n) {
+    // Equal to 1e9 to not compromise the min() method
+    int right = 1e9;
+    int bottom = 1e9;
+
+    // If it's the end of the grid return this value, end of recursive
+    if (m == nb_rows && n == nb_cols)
+      return grid[m][n];
+
+    // If position already compute use it
+    if (memo[m][n])
+      return memo[m][n];
+
+    // If there is neighboors, recursive on them
+    if (n < nb_cols)
+      right = dynamicPathSum(grid, m, n + 1);
+    if (m < nb_rows)
+      bottom = dynamicPathSum(grid, m + 1, n);
+
+    // The shortest path is actual value + the mininum between right and bottom
+    // neighboor
+    // Add this value to the memo before returning it
+    memo[m][n] = grid[m][n] + min(right, bottom);
+    return memo[m][n];
+  }
+};
+#+end_src
+
+*** Conclusion
+This code *works* !! AND it's much *faster !*
