@@ -1,0 +1,49 @@
+#+title: Readme
+
+* TABLE OF CONTENT :TOC:
+- [[#problem][PROBLEM]]
+- [[#solving][SOLVING]]
+  - [[#steps][Steps]]
+  - [[#code][Code]]
+
+* PROBLEM
+There is a special typewriter with lowercase English letters ='a'= to ='z'= arranged in a circle with a pointer. A character can only be typed if the pointer is pointing to that character.
+The pointer is initially pointing to the character ='a'=.
+
+#+attr_html: :width 400px
+[[./img/chart.jpg]]
+
+Each second, you may perform one of the following operations:
+    + Move the Pointer one character *counterclockwise* or *clockwise*
+    + Type the character the pointer is *currently* only
+
+Given a string =word=, return the *minimum* number of seconds to type out the characters in =word=.
+
+* SOLVING
+** Steps
++ Iterate on all letters from your word:
+  - Add the shortest path between two letter
+  - Add the time to type the letter
++ Return the time accumulated
+
+** Code
+#+begin_src cpp
+class Solution {
+public:
+    int minTimeToType(string word) {
+        // Because we begin on a we move to the right pointer and +1 to add the first letter
+        int time = shortest_path('a', word[0]) + 1;
+        for (int i = 0; i < word.length()-1; i++) {
+            time += shortest_path(word[i], word[i+1]);
+            time += 1;
+        }
+        return time;
+    }
+
+private:
+    int shortest_path(char start, char end) {
+        int distance = abs(start-end);
+        return distance > 13 ? 26-distance : distance;
+    }
+};
+#+end_src
