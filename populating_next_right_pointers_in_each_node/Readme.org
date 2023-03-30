@@ -1,0 +1,118 @@
+#+title: Readme
+
+* TABLE OF CONTENT :TOC:
+- [[#problem][PROBLEM]]
+  - [[#example1][Example1]]
+  - [[#example2][Example2]]
+- [[#solving][SOLVING]]
+  - [[#dfs][DFS]]
+  - [[#bfs][BFS]]
+
+* PROBLEM
+You are given a perfect binary tree where all leaves are on the same level, and every parent has two children. The binary tree has the following definition:
+
+#+begin_src cpp
+struct Node {
+  int val;
+  Node *left;
+  Node *right;
+  Node *next;
+}
+#+end_src
+
+Populate each next pointer to point to its next right node. If there is no next right node, the next pointer should be set to =NULL=.
+
+Initially, all next pointers are set to =NULL=.
+
+** Example1
+#+attr_html: :width 800px
+[[./img/116_sample.png]]
+
+#+begin_src org
+=Input=: root = [1,2,3,4,5,6,7]
+=Output=: [1,#,2,3,#,4,5,6,7,#]
+Explanation: Given the above perfect binary tree (Figure A), your function should populate each next pointer to point to its next right node, just like in Figure B. The serialized output is in level order as connected by the next pointers, with '#' signifying the end of each level.
+#+end_src
+
+** Example2
+#+begin_src org
+=Input=: root = []
+=Output= []
+#+end_src
+
+* SOLVING
+** DFS
+We'll use Depth-first Search method
+*** Steps
++ If =root= equal to =NULL= return
++ =Left= next equal =Right= If =Left= and =Right= different of =NULL=
++ Your =edge= (=Right= or =Left= if =NULL=) next equal to =current= node next =Left= or =Right= if =NULL=
++ Recursive on the =Left= node
++ Recursive on the =Right= node
+
+*** Code
+#+begin_src cpp
+class Solution {
+public:
+  Node *connect(Node *root) {
+    if (!root)
+      return nullptr;
+
+    Node *edge = root->right ? root->right : root->left;
+    if (root->left && root->right)
+      root->left->next = root->right;
+
+    if (root->next)
+      if (root->next->left)
+        edge->next = root->next->left;
+      else if (root->next->right)
+        edge->next = root->next->right;
+
+    connect(root->left);
+    connect(root->right);
+    return root;
+  }
+};
+#+end_src
+
+** BFS
+We'll use Breadth-first Search method
+*** Steps
++ Return if =root= equal =NULL=
++ Push the =root= to the =queue=
++ While =queue= not empty:
+  - Initialize the =NextNode= to =NULL=
+  - For each element on the queue:
+    + =Current= equal pop on the =queue=
+    + =Current= next equal =NextNode=
+    + =NextNode= equal =Current=
+    + If =Current= has children push to the =queue= the =Right= and =Left= child *(order is very important)*
++ return the =root=
+
+*** Code
+#+begin_src cpp
+class Solution {
+public:
+  Node *connect(Node *root) {
+    if (!root)
+      return nullptr;
+
+    queue<Node *> q;
+    q.push(root);
+    while (size(q)) {
+      Node *nextNode = nullptr;
+      for (int i = size(q); i; i--) {
+        Node *cur = q.front();
+        q.pop();
+        cur->next = nextNode;
+        nextNode = cur;
+        if (cur->right) {
+          q.push(cur->right);
+          q.push(cur->left);
+        }
+      }
+    }
+    return root;
+  }
+};
+#+end_src
