@@ -46,12 +46,14 @@ We'll use Breadth-first Search method
 
 ** Steps
 + Create a queue and another matrix called =turn=
-+ Parcor the matrix to push into a queue the =rotten oranges= the orange position and into =turn= =0=
-+ While queue isn't empty:
-  - Pop the queue to get position from last =rotten oranges=
-  - Get the neighboors of this element, if it's an =fresh orange= add it to the queue and change it's value to =rotten=
-+ Create a value =turnMax=
-+ Parcor the matrix:
++ Browse the matrix to push in a queue the position of the =rotten oranges= and in =turn= the value =0=.
+  + While queue isn't empty:
+  + Pop the queue to get position from last =rotten oranges=
+  + Get the neighboors of this orange:
+    + if it's an =fresh orange= add it to the queue and change it's value to =rotten=
+    + In =turn= put the value of turn of this =parent + 1=
++ Create a variable =turnMax=
++ Browse the matrix:
   - if there is a =fresh orange= return -1
   - If it's a =rotten orange= check if it's turn is bigger than =turnMax= if yes update it
 + Return =turnMax=
