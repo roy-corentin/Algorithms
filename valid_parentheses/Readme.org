@@ -1,0 +1,74 @@
+#+title: Readme
+
+* TABLE OF CONTENT :TOC:
+- [[#problem][PROBLEM]]
+  - [[#example1][Example1]]
+  - [[#example2][Example2]]
+  - [[#example3][Example3]]
+- [[#solving][SOLVING]]
+  - [[#steps][Steps]]
+  - [[#code][Code]]
+
+* PROBLEM
+Given a string =s= containing just the characters ='('= , =')'= , ='{'= , ='}'= , ='['= and =']'=, determine if the input string is valid.
+
+An input string is valid if:
+ + Open brackets must be closed by the same type of brackets.
+ + Open brackets must be closed in the correct order.
+ + Every close bracket has a corresponding open bracket of the same type.
+
+** Example1
+#+begin_src org
+*Input*: s = "()"
+*Output*: true
+#+end_src
+
+** Example2
+#+begin_src org
+*Input*: s = "([]){}"
+*Output*: true
+#+end_src
+
+** Example3
+#+begin_src org
+*Input*: s = "(]"
+*Output*: false
+#+end_src
+
+* SOLVING
+** Steps
+1. Create a =Stack=
+2. Browse the string:
+   1) If characters is an =open parentheses= push to the =stack=
+   2) If characters is an =close parentheses=
+      1. If the top of the =stack= is the open equivalent pop the =stack=
+      2. Otherwise return =false=, the string isn't closing the last open parentheses
+   3) Otherwise return =false=, the character isn't an open or close parentheses
+3. return =true= if the =stack= is empty otherwise =false= because all parentheses aren't closed
+
+** Code
+#+begin_src cpp
+class Solution {
+public:
+  bool isValid(string s) {
+    const string open = "({[";
+    const string close = ")}]";
+    stack<char> parenthesesOpen;
+
+    for (int i = 0; i < s.size(); i++) {
+      if (open.find(s[i]) != std::string::npos)
+        parenthesesOpen.push(s[i]);
+      else {
+        int n = close.find(s[i]);
+        if (n != std::string::npos) {
+          if (parenthesesOpen.empty() || open[n] != parenthesesOpen.top())
+            return false;
+          parenthesesOpen.pop();
+        } else
+          return false;
+      }
+    }
+    return parenthesesOpen.empty();
+  }
+};
+#+end_src
