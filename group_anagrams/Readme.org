@@ -1,0 +1,98 @@
+#+title: Readme
+
+* TABLE OF CONTENT :TOC:
+- [[#problem][PROBLEM]]
+  - [[#example1][Example1]]
+  - [[#example2][Example2]]
+  - [[#example3][Example3]]
+- [[#solving][SOLVING]]
+  - [[#steps][Steps]]
+  - [[#code][Code]]
+
+* PROBLEM
+Given an array of strings =strs=, group the anagrams together. You can return the answer in any order.
+
+An *Anagram* is a word or phrase formed by rearranging the letters of a different word or phrase, typically using all the original letters exactly once.
+
+** Example1
+#+begin_src org
+*Input*: strs = ["eat","tea","tan","ate","nat","bat"]
+*Output*: [["bat"],["nat","tan"],["ate","eat","tea"]]
+#+end_src
+
+** Example2
+#+begin_src org
+*Input*: strs = [""]
+*Output*: [ [""] ]
+#+end_src
+
+** Example3
+#+begin_src org
+*Input*: strs = ["a"]
+*Output*: [ ["a"] ]
+#+end_src
+
+* SOLVING
+We'll use Hash and Array to solve this problem
+
+The key for the hash will be the sorted string and the value an array of word.
+
+** Steps
++ For Each words in the array:
+  1. Sort the word
+  2. Use the sorted word as key and add the string in it's array
++ Loop on your map and push to =result= each value
++ Return =result=
+
+*** Example
+#+begin_src txt
+["eat","tea","tan","ate","nat","bat"]
+map = {}
+
+   ↓
+["eat","tea","tan","ate","nat","bat"]
+map = {"aet": ["eat"]}
+
+         ↓
+["eat","tea","tan","ate","nat","bat"]
+map = {"aet": ["eat", "tea"]}
+
+               ↓
+["eat","tea","tan","ate","nat","bat"]
+map = {"aet": ["eat", "tea"], "atn": ["tan"]}
+
+                     ↓
+["eat","tea","tan","ate","nat","bat"]
+map = {"aet": ["eat", "tea", "ate"], "atn": ["tan"]}
+
+                           ↓
+["eat","tea","tan","ate","nat","bat"]
+map = {"aet": ["eat", "tea", "ate"], "atn": ["tan", "nat"]}
+
+                                 ↓
+["eat","tea","tan","ate","nat","bat"]
+map = {"aet": ["eat", "tea", "ate"], "atn": ["tan", "nat"], "abt": ["bat"]}
+
+result = [["eat", "tea", "ate"], ["tan", "nat"], ["bat"]]
+#+end_src
+
+** Code
+#+begin_src cpp
+class Solution {
+public:
+  vector<vector<string>> groupAnagrams(vector<string> &strs) {
+    vector<vector<string>> result;
+    unordered_map<string, vector<string>> map;
+
+    for (string str : strs) {
+      string sorted = str;
+      sort(sorted.begin(), sorted.end());
+      map[sorted].push_back(str);
+    }
+    for (auto it = map.begin(); it != map.end(); it++) {
+      result.push_back(it->second);
+    }
+    return result;
+  }
+};
+#+end_src
