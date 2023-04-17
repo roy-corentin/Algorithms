@@ -18,7 +18,7 @@ Return the maximum area of an island in =grid=. If there is no island, return =0
 
 ** Example1
 #+attr_html: :width 500px
-[[./img/maxarea1-grid.jpg]]
+[[./maxarea1-grid.jpg]]
 #+begin_src org
 *Input*: grid = [[0,0,1,0,0,0,0,1,0,0,0,0,0],[0,0,0,0,0,0,0,1,1,1,0,0,0],[0,1,1,0,1,0,0,0,0,0,0,0,0],[0,1,0,0,1,1,0,0,1,0,1,0,0],[0,1,0,0,1,1,0,0,1,1,1,0,0],[0,0,0,0,0,0,0,0,0,0,1,0,0],[0,0,0,0,0,0,0,1,1,1,0,0,0],[0,0,0,0,0,0,0,1,1,0,0,0,0]]
 *Output*: 6
