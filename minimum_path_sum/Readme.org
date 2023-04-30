@@ -36,7 +36,7 @@ We'll use Dynamic Programming method.
 ** First Approach
 *** Steps
 + First of all we have to return if we are at the end. =recursive end=
-+ Then get the =Right= and =Bottom= neighboor by calling the recursive method with =m+1= or =n+1=
++ Then get the =Right= and =Bottom= neighboor by calling the recursive method with =m+1= and =n+1= if possible
 + Then return the actual =value= of your grid element =+= the =mininum between the right and bottom neighboor=
 
 *** Code
@@ -44,33 +44,32 @@ We'll use Dynamic Programming method.
 class Solution {
 public:
   int minPathSum(vector<vector<int>> &grid) {
-    nb_rows = grid.size() - 1;
-    nb_cols = grid[0].size() - 1;
+    m = grid.size() - 1;
+    n = grid[0].size() - 1;
     return dynamicPathSum(grid, 0, 0);
   }
 
 private:
-  int nb_rows;
-  int nb_cols;
+  int m;
+  int n;
 
-  int dynamicPathSum(vector<vector<int>> &grid, int m, int n) {
+  int dynamicPathSum(vector<vector<int>> &grid, int r, int c) {
     // Equal to 1e9 to not compromise the min() method
     int right = 1e9;
     int bottom = 1e9;
 
     // If it's the end of the grid return this value, end of recursive
-    if (m == nb_rows && n == nb_cols)
-      return grid[m][n];
+    if (r == m && c == n)
+      return grid[r][c];
 
     // If there is neighboors, recursive on them
-    if (n < nb_cols)
-      right = dynamicPathSum(grid, m, n + 1);
-    if (m < nb_rows)
-      bottom = dynamicPathSum(grid, m + 1, n);
+    if (c < n)
+      right = dynamicPathSum(grid, r, c + 1);
+    if (r < m)
+      bottom = dynamicPathSum(grid, r + 1, c);
 
-    // The shortest path is actual value + the mininum between right and bottom
-    // neighboor
-    return grid[m][n] + min(right, bottom);
+    // The shortest path is actual value + the mininum between right and bottom neighboor
+    return grid[r][c] + min(right, bottom);
   }
 };
 #+end_src
@@ -84,7 +83,7 @@ We keep the same approach or almost.. we'll use memoization !!
 *** Steps
 + First of all we have to return if we are at the end. =recursive end=
 + Check if in the =memo= this position is already compute
-+ Then get the =Right= and =Bottom= neighboor by calling the recursive method with =m+1= or =n+1=
++ Then get the =Right= and =Bottom= neighboor by calling the recursive method with =m+1= if =n+1= if possible
 + Add in the =memo= the actual =value= of your grid element =+= the =mininum between the right and bottom neighboor=
 + And Then return the memo value
 
@@ -94,9 +93,9 @@ class Solution {
 public:
   int minPathSum(vector<vector<int>> &grid) {
     // Initialize the memo with the good size
-    nb_rows = grid.size() - 1;
-    nb_cols = grid[0].size() - 1;
-    memo = vector<vector<int>>(nb_rows + 1, vector<int>(nb_cols + 1));
+    m = grid.size() - 1;
+    n = grid[0].size() - 1;
+    memo = vector<vector<int>>(m + 1, vector<int>(n + 1));
     return dynamicPathSum(grid, 0, 0);
   }
 
@@ -104,33 +103,32 @@ private:
   // The memo
   vector<vector<int>> memo;
 
-  int nb_rows;
-  int nb_cols;
+  int n;
+  int m;
 
-  int dynamicPathSum(vector<vector<int>> &grid, int m, int n) {
+  int dynamicPathSum(vector<vector<int>> &grid, int r, int c) {
     // Equal to 1e9 to not compromise the min() method
     int right = 1e9;
     int bottom = 1e9;
 
     // If it's the end of the grid return this value, end of recursive
-    if (m == nb_rows && n == nb_cols)
-      return grid[m][n];
+    if (r == m && c == n)
+      return grid[r][c];
 
     // If position already compute use it
-    if (memo[m][n])
-      return memo[m][n];
+    if (memo[r][c])
+      return memo[r][c];
 
     // If there is neighboors, recursive on them
-    if (n < nb_cols)
-      right = dynamicPathSum(grid, m, n + 1);
-    if (m < nb_rows)
-      bottom = dynamicPathSum(grid, m + 1, n);
+    if (c < n)
+      right = dynamicPathSum(grid, r, c + 1);
+    if (r < m)
+      bottom = dynamicPathSum(grid, r + 1, c);
 
-    // The shortest path is actual value + the mininum between right and bottom
-    // neighboor
+    // The shortest path is actual value + the mininum between right and bottom neighboor
     // Add this value to the memo before returning it
-    memo[m][n] = grid[m][n] + min(right, bottom);
-    return memo[m][n];
+    memo[r][c] = grid[r][c] + min(right, bottom);
+    return memo[r][c];
   }
 };
 #+end_src
