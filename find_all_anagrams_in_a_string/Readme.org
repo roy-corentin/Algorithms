@@ -1,0 +1,90 @@
+#+title: Readme
+
+* TABLE OF CONTENT :TOC:
+- [[#problem][PROBLEM]]
+  - [[#example-1][Example 1]]
+  - [[#example-2][Example 2]]
+- [[#solving][SOLVING]]
+  - [[#steps][Steps]]
+  - [[#code][Code]]
+
+* PROBLEM
+Given two strings =s= and =p=, return an array of all the start indices of =p='s anagrams in =s=. You may return the answer in any order.
+
+An *Anagram* is a word or phrase formed by rearranging the letters of a different word or phrase, typically using all the original letters exactly once.
+
+** Example 1
+#+begin_src org
+*Input*: s = "cbaebabacd", p = "abc"
+*Output*: [0,6]
+*Explanation*:
+The substring with start index = 0 is "cba", which is an anagram of "abc".
+The substring with start index = 6 is "bac", which is an anagram of "abc".
+#+end_src
+
+** Example 2
+#+begin_src org
+*Input*: s = "abab", p = "ab"
+*Output*: [0,1,2]
+*Explanation*:
+The substring with start index = 0 is "ab", which is an anagram of "ab".
+The substring with start index = 1 is "ba", which is an anagram of "ab".
+The substring with start index = 2 is "ab", which is an anagram of "ab".
+#+end_src
+
+* SOLVING
+We'll use the Sliding Window method.
+
+** Steps
+1. Create a vector =result=, we will store the index of each anagrams.
+2. Create two array =sFrequency= and =pFrequency= of size 26. Which will be used to save the frequency of alphabet of a string.
+3. Get the frequency of the =p= string and the =s= string but the same size as =p=
+4. Check if the frequency are the same. If yes put =0= in the =result=
+5. Now from =pSize= to =sSize= loop with index =i=:
+   + Remove from =sFrequency= the first letter of the window so at index =i - pSize=
+   + Add to =sFrequency= the last letter of the window so at index =i=
+   + If =sFrequency= is the same as =pFrequency=, push to =result= the index =i=
+6. Return =result=
+
+** Code
+#+begin_src cpp
+class Solution {
+public:
+  vector<int> findAnagrams(string s, string p) {
+    int pSize = p.size();
+    int sSize = s.size();
+    int sFrequency[26] = {};
+    int pFrequency[26] = {};
+    vector<int> result;
+
+    if (sSize < pSize)
+      return {};
+
+    for (int i = 0; i < pSize; i++) {
+      sFrequency[s[i] - 'a'] += 1;
+      pFrequency[p[i] - 'a'] += 1;
+    }
+
+    if (sameFrequencyArray(sFrequency, pFrequency))
+      result.push_back(0);
+
+    for (int i = pSize; i < sSize; i++) {
+      sFrequency[s[i - pSize] - 'a'] -= 1;
+      sFrequency[s[i] - 'a'] += 1;
+      if (sameFrequencyArray(sFrequency, pFrequency))
+        result.push_back(i - (pSize - 1));
+    }
+
+    return result;
+  }
+
+private:
+  bool sameFrequencyArray(int first[], int second[]) {
+    for (int i = 0; i < 26; i++) {
+      if (first[i] != second[i])
+        return false;
+    }
+    return true;
+  }
+};
+#+end_src
