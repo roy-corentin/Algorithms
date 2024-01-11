@@ -33,9 +33,9 @@ Given the =head= of a singly linked list, reverse the list, and return the rever
 * SOLVING
 ** Steps
 + Create =prevNode= and =nextNode= to solve this problem
-+ =nextNode= equal =head= next
-+ =head= next equal =prevNode=
-+ =prevNode= equal =head=
++ =nextNode= equal =head= next ~N~
++ =head= next equal =prevNode= ~H~
++ =prevNode= equal =head= ~P~
 + =head= equal =nextNode=
 + return =prevNode=
 
