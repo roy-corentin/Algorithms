@@ -26,7 +26,7 @@
       '(("orgfiles"
          :recursive t
          :base-directory "./content"
-         :publishing-function org-html-export-to-html
+         :publishing-function org-html-publish-to-html
          :publishing-directory "./public"
          :with-author nil
          :with-creator t
