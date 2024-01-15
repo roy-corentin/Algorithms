@@ -1,0 +1,60 @@
+:PROPERTIES:
+:ID:       cfe6fd5b-60d3-45c6-914d-e1831b0cd940
+:END:
+#+title: Longest Substring Without Repeating Characters
+#+filetags: :Problem:
+
+* [[id:f23824a1-0515-47c6-b386-21d83a9aec21][PROBLEM]]
+Given a string =s=, find the length of the longest =substring= without repeating characters.
+
+** Example1
+#+begin_src org
+*Input*: s = "abcabcbb"
+*Output*: 3
+Explanation: The answer is "abc", with the length of 3.
+#+end_src
+
+** Example2
+#+begin_src org
+*Input*: s = "bbbbb"
+*Output*: 1
+Explanation: The answer is "b", with the length of 1.
+#+end_src
+
+** Example3
+#+begin_src org
+*Input*: s = "pwwkew"
+*Output*: 3
+Explanation: The answer is "wke", with the length of 3.
+Notice that the answer must be a substring, "pwke" is a subsequence and not a substring.
+#+end_src
+
+* SOLVING
+** Steps
+** Code
+#+begin_src cpp
+class Solution {
+  class Solution {
+  public:
+    int lengthOfLongestSubstring(string s) {
+      int string_size = s.length();
+      int pointer = 0;
+      int max_size = 0;
+      int size;
+      unordered_map<char, int> hash;
+
+      while (pointer < string_size) {
+        size = 0;
+        hash.clear();
+        while (pointer < string_size &&
+               hash.emplace(s[pointer], pointer).second) {
+          pointer++;
+          size++;
+        }
+        if (size > max_size) max_size = size;
+        if (pointer < string_size) pointer = hash[s[pointer]] + 1;
+      }
+      return max_size;
+    }
+  };
+#+end_src

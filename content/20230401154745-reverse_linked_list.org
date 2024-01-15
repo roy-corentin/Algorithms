@@ -1,0 +1,108 @@
+:PROPERTIES:
+:ID:       8baa4866-9026-42ff-847e-791c1c0fa9d6
+:END:
+#+title: Reverse Linked List
+#+filetags: :LinkedList:Problem:
+
+* [[id:f23824a1-0515-47c6-b386-21d83a9aec21][PROBLEM]]
+Given the =head= of a singly linked list, reverse the list, and return the reversed list.
+
+** Example1
+#+begin_src org
+*Input*: head = [1,2,3,4,5]
+*Output*: [5,4,3,2,1]
+#+end_src
+
+** Example2
+#+begin_src org
+*Input*: head = [1,2]
+*Output*: [2,1]
+#+end_src
+
+** Example3
+#+begin_src org
+*Input*: head = []
+*Output*: []
+#+end_src
+
+* SOLVING
+** Steps
++ Create =prevNode= and =nextNode= to solve this problem
++ =nextNode= equal =head= next ~N~
++ =head= next equal =prevNode= ~H~
++ =prevNode= equal =head= ~P~
++ =head= equal =nextNode=
++ return =prevNode=
+
+*** Example1
+#+begin_src org
+  P     H    N
+  ↓     ↓    ↓
+ NULL  [1 -> 2 -> 3 -> 4 -> 5 -> NULL]
+#+end_src
+
++ =head= next equal =prevNode=
++ =head= equal =next=
+
+#+begin_src org
+          P  H    N
+          ↓  ↓    ↓
+ [NULL <- 1  2 -> 3 -> 4 -> 5 -> NULL]
+#+end_src
+
++ =head= next equal =prevNode=
++ =head= equal =next=
+
+#+begin_src org
+               P    H    N
+               ↓    ↓    ↓
+ [NULL <- 1 <- 2  3 -> 4 -> 5 -> NULL]
+#+end_src
+
++ =head= next equal =prevNode=
++ =head= equal =next=
+
+#+begin_src org
+                    P  H    N
+                    ↓  ↓    ↓
+ [NULL <- 1 <- 2 <- 3  4 -> 5 -> NULL]
+#+end_src
+
++ =head= next equal =prevNode=
++ =head= equal =next=
+
+#+begin_src org
+                         P  H    N
+                         ↓  ↓    ↓
+ [NULL <- 1 <- 2 <- 3 <- 4  5 -> NULL]
+#+end_src
+
++ =head= next equal =prevNode=
++ =head= equal =next=
+
+#+begin_src org
+                              P   H N
+                              ↓   ↓ ↓
+ [NULL <- 1 <- 2 <- 3 <- 4 <- 5]  NULL]
+#+end_src
+
++ Return =prevNode=
+
+** Code
+#+begin_src cpp
+class Solution {
+public:
+  ListNode *reverseList(ListNode *head) {
+    ListNode *nextNode = nullptr;
+    ListNode *prevNode = nullptr;
+
+    while (head) {
+      nextNode = head->next;
+      head->next = prevNode;
+      prevNode = head;
+      head = nextNode;
+    }
+    return prevNode;
+  }
+};
+#+end_src

@@ -1,0 +1,7 @@
+:PROPERTIES:
+:ID:       f23824a1-0515-47c6-b386-21d83a9aec21
+:END:
+#+title: Problem Solving
+#+filetags: :Problem:
+
+Problem solving is the process of identifying and then implementing a solution to a problem.

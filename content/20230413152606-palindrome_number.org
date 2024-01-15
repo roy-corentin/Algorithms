@@ -1,0 +1,89 @@
+:PROPERTIES:
+:ID:       2f146d57-a13d-4fdd-9d56-297b92ff8b01
+:END:
+#+title: Palindrome Number
+#+filetags: :Problem:
+
+* [[id:f23824a1-0515-47c6-b386-21d83a9aec21][PROBLEM]]
+Given an integer =x=, return =true= if =x= is a *palindrome*, and =false= otherwise.
+
+** Example1
+#+begin_src org
+*Input*: x = 121
+*Output*: true
+*Explanation*: 121 reads as 121 from left to right and from right to left.
+#+end_src
+
+** Example2
+#+begin_src org
+*Input*: x = -121
+*Output*: false
+*Explanation*: From left to right, it reads -121. From right to left, it becomes 121-. Therefore it is not a palindrome.
+#+end_src
+
+** Example3
+#+begin_src org
+*Input*: x = 10
+*Output*: false
+*Explanation*: Reads 01 from right to left. Therefore it is not a palindrome.
+#+end_src
+
+* SOLVING
+** [[id:a2a75b66-e141-4c83-99eb-9d108a5e5e22][Two Pointers]] Method
+*** Steps
+1. Transform the integer to string
+2. Add your =Left Pointer= to =0= and the =Right Pointer= to the last index
+3. While =Left Pointer= is inferior to the =Right Pointer=:
+   1) If Left Element is different from Right Element, return =false=. The string isn't a palindrome
+4. Return =true= because we parse all the string and all character were the same
+
+*** Code
+#+begin_src cpp
+class Solution {
+public:
+  bool isPalindrome(int x) {
+    string nbStr = to_string(x);
+    int leftPtr = 0;
+    int rightPtr = nbStr.size() - 1;
+
+    while (leftPtr < rightPtr) {
+      if (nbStr[leftPtr] != nbStr[rightPtr])
+        return false;
+      leftPtr++;
+      rightPtr--;
+    }
+
+    return true;
+  }
+};
+#+end_src
+
+** Revert Half
+*** Steps
+1. Initialize var =RightPart= to =0= and =leftPart= to your =number=
+2. If =number= is negative or =number= first digit is =0= return =false=. It can't be a palindrome
+3. While the =RightPart= is inferior to the =LeftPart=:
+   1) Add the first digit of =LeftPart= to =RightPart= by =RightPart = RightPart * 10 /to add a new number/ + LeftPart % 10 /change the new number by the first digit of LeftPart/=
+   2) Divide =LeftPart= by 10 to lose one digit
+4. return the comparison between =LeftPart= and =RightPart= or =LeftPart= and (=RightPart= divided by =10=)
+
+*** Code
+#+begin_src cpp
+class Solution {
+public:
+  bool isPalindrome(int x) {
+    int rightPart = 0;
+    int leftPart = x;
+
+    if (x < 0 || (x != 0 && x % 10 == 0))
+      return false;
+
+    while (rightPart < leftPart) {
+      rightPart = rightPart * 10 + leftPart % 10;
+      leftPart /= 10;
+    }
+
+    return leftPart == rightPart || leftPart == rightPart / 10;
+  }
+};
+#+end_src

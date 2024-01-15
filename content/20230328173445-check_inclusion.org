@@ -1,0 +1,79 @@
+:PROPERTIES:
+:ID:       47f476e9-0f3d-435a-aab4-c68e105cf5c9
+:END:
+#+title: Check Inclusion
+#+filetags: :Problem:
+
+* [[id:f23824a1-0515-47c6-b386-21d83a9aec21][PROBLEM]]
+Given two strings =s1= and =s2=, return true if =s2= contains a permutation of =s1=, or =false= otherwise.
+
+In other words, return =true= if one of =s1='s permutations is the substring of =s2=.
+
+** Example1
+#+begin_src org
+*Input*: s1 = "ab", s2 = "eidbaooo"
+*Output*: true
+Explanation: s2 contains one permutation of s1 ("ba").
+#+end_src
+
+** Example2
+#+begin_src org
+=Input=: s1 = "ab", s2 = "eidboaoo"
+=Output=: false
+#+end_src
+
+* SOLVING
+** Steps
++ Create two vectors of size =26= filled by some =0= for the two string
++ Fill the first vector with the string =s1=:
+  - For each char:
+    + Increase by one at position =char - 'a'= (transform a-z into 0-26)
++ Create index =i= and =j= to 0
++ Use =j= to parcor string =s2= and increase by one the second vector at position =s2[j]=
++ If =j-i= equal length of string =s1= that means second vector has enough information to compare two vector for permutation
++ If =j-i= inferior at length of string =s1= that means second vector doesn't has enough information to compare two vector for permutation, so only increase =j=
++ Otherwise increase =i= and =j= and decrease =s2[i]= because not in the scoop of search anymore
++ If previous compare didn't work return =false=
+
+** Code
+#+begin_src cpp
+class Solution {
+private:
+  bool areVectorsEqual(vector<int> a, vector<int> b) {
+    for (int i = 0; i < 26; i++) {
+      if (a[i] != b[i])
+        return false;
+    }
+    return true;
+  }
+
+public:
+  bool checkInclusion(string s1, string s2) {
+    if (s2.size() < s1.size())
+      return false;
+
+    int i = 0, j = 0;
+    int lenghtS1 = s1.size() - 1;
+    vector<int> freqS1(26, 0);
+    vector<int> freqS2(26, 0);
+
+    for (char c : s1)
+      freqS1[c - 'a']++;
+
+    while (j < s2.size()) {
+      freqS2[s2[j] - 'a']++;
+
+      if (j - i == lenghtS1 && areVectorsEqual(freqS1, freqS2))
+        return true;
+
+      // If window is bigger than string1 otherwise window not long enougth
+      if (j - i >= lenghtS1) {
+        freqS2[s2[i] - 'a']--;
+        i++;
+      }
+      j++;
+    }
+    return false;
+  }
+};
+#+end_src

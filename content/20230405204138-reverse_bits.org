@@ -1,0 +1,56 @@
+:PROPERTIES:
+:ID:       da0f4008-d987-437c-aabb-9d0b1486e2e3
+:END:
+#+title: Reverse Bits
+#+filetags: :BitManipulation:Problem:
+
+* [[id:f23824a1-0515-47c6-b386-21d83a9aec21][PROBLEM]]
+Reverse bits of a given 32 bits unsigned integer.
+
+* SOLVING
+We'll use [[id:473ee769-750d-4c14-b63a-c4f0a9acd928][Bit Manipulation]] method
+
+** Steps
++ Create a uint32_t =result= we'll return as the answer
++ Repeat =32= time or the longer of your bit
+  - =result= equal to =result= or (=|= or bit operation) on the result of =n= and (=&= and bit operation) 1 to get the first bit
+
+*** Example
+Example with 6bit (32 is tooooo long) =011101=
+#+begin_src org
+=n=      [011101] & 1 == 1
+=result= [000000] << 1
+
+=n=      [001110] & 1 == 0
+=result= [000001] << 0
+
+=n=      [000111] & 1 == 1
+=result= [000010] << 1
+
+=n=      [000011] & 1 == 1
+=result= [000101] << 1
+
+=n=      [000001] & 1 == 1
+=result= [001011] << 1
+
+=n=      [000000] & 1 == 0
+=result= [010111] << 0
+
+=result= [101110]
+#+end_src
+
+** Code
+#+begin_src cpp
+class Solution {
+public:
+  uint32_t reverseBits(uint32_t n) {
+    uint32_t result;
+
+    for (int i = 0; i < 32; i++) {
+      result = (result << 1) | (n & 1);
+      n >>= 1;
+    }
+    return result;
+  }
+};
+#+end_src

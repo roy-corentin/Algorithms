@@ -1,0 +1,59 @@
+:PROPERTIES:
+:ID:       647c848a-8e9d-47b1-9e78-7b25e9b37ec8
+:END:
+#+title: Letter Case Permutation
+#+filetags: :Backtracking:Problem:
+
+* [[id:f23824a1-0515-47c6-b386-21d83a9aec21][PROBLEM]]
+Given a string =s=, you can transform every letter individually to be lowercase or uppercase to create another string.
+
+Return a list of all possible strings we could create. Return the output in any *order*.
+
+** Example1
+#+begin_src org
+*Input*: s = "a1b2"
+*Output*: ["a1b2","a1B2","A1b2","A1B2"]
+#+end_src
+
+** Example2
+#+begin_src org
+*Input*: s = "3z4"
+*Output*: ["3z4","3Z4"]
+#+end_src
+
+** Constraints
++ =s= consits of lowercase English letters, uppercase English letters and digits
+
+* SOLVING
+we'll use [[id:2fbdfb54-d819-4ed3-8c1b-8850777583d5][Backtracking]] method.
+
+** Steps
++ If the =index= equal to =size= push to the =result= the string
++ Call once the method with the exact same =string= and just the =index + 1=
++ If the current element is an =alpha= change uppercase <--> lowercase and call a second time the method
++ Return the =result=
+
+** Code
+#+begin_src cpp
+class Solution {
+public:
+  vector<string> letterCasePermutation(string s) {
+    vector<string> result;
+    backtrack(s, 0, s.size(), result);
+    return result;
+  }
+
+private:
+  void backtrack(string &s, int idx, int size, vector<string> &result) {
+    if (idx == size)
+      result.push_back(s);
+    else {
+      backtrack(s, idx + 1, size, result);
+      if (s[idx] > '9') {
+        s[idx] += s[idx] <= 'Z' ? 32 : -32;
+        backtrack(s, idx + 1, size, result);
+      }
+    }
+  }
+};
+#+end_src

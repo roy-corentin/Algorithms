@@ -1,0 +1,31 @@
+:PROPERTIES:
+:ID:       2d77b6b3-d3e4-47b6-817f-0730bf897932
+:END:
+#+title: Algorithm Dekker
+
+* PROBLEM
+Dekker's [[id:91d83f2a-32c8-45aa-a325-5e1869870ef1][Algorithm]] is to prevent [[id:7dcff2a9-3d37-412c-a3f4-f84e1c253934][Race Condition]]
+
+* HOW IT WORK
+Before going into the algorithm you need to know that:
+ + There is a =ligth= for each program. Is a metaphor to say that the program is showing that it wants to access to the data.
+ + There is a =turn= variable. This variable will help in case the two program want to access at the same time and we have to make a decision for which one must go first.
+
+#+attr_html: :width 600px
+[[../img/Dekker'sAlgorithmProblem.png]]
+
+** Pseudo Code
+#+begin_src txt
+our ligth = on
+while other light = on:
+  if turn = other:
+    our light = of
+    wait until turn = ours
+    our light = on
+enter critical section
+turn = other
+our light = off
+#+end_src
+
+#+attr_html: :width 600px
+[[../img/Dekker'sAlgorithmSolved.png]]

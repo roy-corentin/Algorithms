@@ -1,0 +1,102 @@
+:PROPERTIES:
+:ID:       8580087d-92ed-4de3-a327-be60ee27e794
+:END:
+#+title: House Robber
+#+filetags: :Problem:
+
+* [[id:f23824a1-0515-47c6-b386-21d83a9aec21][PROBLEM]]
+You are a professional robber planning to rob houses along a street. Each house has a certain amount of money stashed, the only constraint stopping you from robbing each of them is that adjacent houses have security systems connected and *it will automatically contact the police if two adjacent houses were broken into on the same night*.
+
+Given an integer array =nums= representing the amount of money of each house, return the maximum amount of money you can rob tonight *without alerting the police*.
+
+** Example1
+#+begin_src org
+*Input*: nums = [1,2,3,1]
+*Output*: 4
+*Explanation*: Rob house 1 (money = 1) and then rob house 3 (money = 3).
+Total amount you can rob = 1 + 3 = 4.
+#+end_src
+
+** Example2
+#+begin_src org
+*Input*: nums = [2,7,9,3,1]
+*Output*: 12
+*Explanation*: Rob house 1 (money = 2), rob house 3 (money = 9) and rob house 5 (money = 1).
+Total amount you can rob = 2 + 9 + 1 = 12.
+#+end_src
+
+* SOLVING
+
+** Steps
++ Create two var =sumEven= and =sumOdd=, initialize them to =0=
++ Iterate on each elements in the array
+  - If index is even update your =sumEven= by taking the max between =sumEven + current element= and =sumOdd=
+  - Otherwise update your =sumOdd= by taking the max between =sumOdd + current element= and =sumEven=
++ Return the max between =sumEven= and =sumOdd=
+
+
+*** Example
+#+begin_src org
+sumEven = 0
+sumOdd = 0
+↓
+[2, 7, 9, 3, 1]
+
+sumEven = 0
+sumOdd = 0
+i = 0
+ ↓
+[2, 7, 9, 3, 1]
+0's index is even so =sumEven= equal max of 0+2 and 0 | max of =sumEven+currentElement= and =sumOdd=
+
+sumEven = 2
+sumOdd = 0
+i = 1
+    ↓
+[2, 7, 9, 3, 1]
+7's index is odd so =sumOdd= equal max of 0+7 and 2 | max of =sumOdd+currentElement= and =sumEven=
+
+sumEven = 2
+sumOdd = 7
+i = 2
+       ↓
+[2, 7, 9, 3, 1]
+9's index is even so =sumEven= equal max of 2+9 and 7 | max of =sumEven+currentElement= and =sumOdd=
+So at this moment we know that starting by the first house is a good idea. That's why the algo compare with the other sum
+
+sumEven = 11
+sumOdd = 7
+i = 3
+          ↓
+[2, 7, 9, 3, 1]
+3 is odd so =sumOdd= equal max of 7+3 and 11 | max of =sumOdd+currentElement= and =sumEven=
+
+sumEven = 11
+sumOdd = 11
+i = 4
+             ↓
+[2, 7, 9, 3, 1]
+1's index is even so =sumEven= equal max of 11+1 and 11 | max of =sumEven+currentElement= and =sumOdd=
+
+sumEven = 12
+sumOdd = 11
+
+*Best possible sum is* =12=
+#+end_src
+
+** Code
+#+begin_src cpp
+class Solution {
+public:
+  int rob(vector<int> &nums) {
+    int sumOdd, sumOdd = 0;
+
+    for (int i = 0; i < nums.size(); i++)
+      if (i % 2 == 0)
+        sumEven = max(sumEven + nums[i], sumOdd);
+      else
+        sumOdd = max(sumOdd + nums[i], sumEven);
+    return max(sumEven, sumOdd);
+  }
+};
+#+end_src
