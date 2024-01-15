@@ -22,4 +22,4 @@ jobs:
         uses: JamesIves/github-pages-deploy-action@v4.4.3
         with:
           folder: public
-          token: ${{ secrets.PAGE_SECRET }}
+          token: ${{ secrets.DEPLOY_SECRET }}
