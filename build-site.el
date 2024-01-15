@@ -15,10 +15,10 @@
 (require 'ox-publish)
 
 ;; Function to replace Roam links by IDs with links by locations
-(defun replace-roam-links (string)
+(defun replace-roam-links (text backend info)
   "Replace Roam links by IDs with links by locations."
-  ;; Customize the replacement logic as needed
-  (replace-regexp-in-string "\\[\\[id:.*?\\/\\(.*?\\)\\]\\[.*?\\]\\]" "[[\\1]]" string))
+  (when (org-export-derived-backend-p backend 'html)
+    (replace-regexp-in-string "\\[\\[id:.*?\\/\\(.*?\\)\\]\\[.*?\\]\\]" "[[\\1]]" text)))
 
 ;; Add a custom filter to apply the replacement function
 (add-to-list 'org-export-filter-link-functions 'replace-roam-links)
