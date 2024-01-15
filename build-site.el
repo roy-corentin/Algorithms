@@ -10,10 +10,18 @@
 
 ;; Install dependencies
 (package-install 'htmlize)
-(package-install 'org-roam)
 
 ;; Load the publishing system
 (require 'ox-publish)
+
+;; Function to replace Roam links by IDs with links by locations
+(defun replace-roam-links (string)
+  "Replace Roam links by IDs with links by locations."
+  ;; Customize the replacement logic as needed
+  (replace-regexp-in-string "\\[\\[id:.*?\\/\\(.*?\\)\\]\\[.*?\\]\\]" "[[\\1]]" string))
+
+;; Add a custom filter to apply the replacement function
+(add-to-list 'org-export-filter-link-functions 'replace-roam-links)
 
 ;; Customize the HTML output
 (setq org-html-validation-link nil            ;; Don't show validation link
