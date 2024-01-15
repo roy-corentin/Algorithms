@@ -10,6 +10,7 @@
 
 ;; Install dependencies
 (package-install 'htmlize)
+(package-install 'org-roam)
 
 ;; Load the publishing system
 (require 'ox-publish)
