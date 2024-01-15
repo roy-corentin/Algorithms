@@ -16,6 +16,7 @@ Returns the current value of the coordinate =(row,col)= from the rectangle.
 
 You want to update element between row2 and row3 and between col3 and col6
 
+#+begin_example
  012345678
 0+--------+
 1+oooooooo+
@@ -24,6 +25,7 @@ You want to update element between row2 and row3 and between col3 and col6
 4+oooooooo+
 5+oooooooo+
 6+--------+
+#+end_example
 
 * SOLUTION
 ** Steps
