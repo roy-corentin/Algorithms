@@ -10,13 +10,15 @@
 
 ;; Install dependencies
 (package-install 'htmlize)
+(package-install 'org-roam)
 
-;; Load the publishing system
+;; Load the installed packages
 (require 'ox-publish)
+(require 'org-roam)
 
 ;; Set Org-roam directory for org-id links based on environment variable
 (setq org-roam-directory (getenv "ORG_ROAM_DIR"))
-(setq org-id-extra-files (org-roam--list-files org-roam-directory))
+(setq org-id-extra-files (org-roam-list-files org-roam-directory)) ;; Updated function name
 
 ;; Customize the HTML output
 (setq org-html-validation-link nil            ;; Don't show validation link
