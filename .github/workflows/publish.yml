@@ -15,6 +15,9 @@ jobs:
       - name: Install Emacs
         run: sudo apt install emacs-nox --yes
 
+      - name: Set Org-roam directory
+        run: export ORG_ROAM_DIR=/path/to/your/org-roam-directory
+
       - name: Build the site
         run: ./build.sh
 

@@ -14,14 +14,9 @@
 ;; Load the publishing system
 (require 'ox-publish)
 
-;; Function to replace Roam links by IDs with links by locations
-(defun replace-roam-links (text backend info)
-  "Replace Roam links by IDs with links by locations."
-  (when (org-export-derived-backend-p backend 'html)
-    (replace-regexp-in-string "\\[\\[id:.*?\\/\\(.*?\\)\\]\\[.*?\\]\\]" "[[\\1]]" text)))
-
-;; Add a custom filter to apply the replacement function
-(add-to-list 'org-export-filter-link-functions 'replace-roam-links)
+;; Set Org-roam directory for org-id links based on environment variable
+(setq org-roam-directory (getenv "ORG_ROAM_DIR"))
+(setq org-id-extra-files (org-roam--list-files org-roam-directory))
 
 ;; Customize the HTML output
 (setq org-html-validation-link nil            ;; Don't show validation link
