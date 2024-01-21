@@ -1,4 +1,5 @@
 (require 'package)
+
 (setq package-user-dir (expand-file-name "./.packages"))
 (setq package-archives '(("melpa" . "https://melpa.org/packages/")
                          ("elpa" . "https://elpa.gnu.org/packages/")))
@@ -9,43 +10,27 @@
   (package-refresh-contents))
 
 ;; Install dependencies
-(package-install 'htmlize)
-(package-install 'org-roam)
+(package-install 'ox-hugo)
 
 ;; Load the installed packages
-(require 'ox-publish)
-(require 'org-roam)
+(require 'ox-hugo)
 
-;; Set Org-roam directory for org-id links based on environment variable
-(setq org-roam-directory (getenv "ORG_ROAM_DIR"))
-(setq org-id-extra-files (org-roam-list-files org-roam-directory)) ;; Updated function name
+;; Set the directory for Roam notes
+(setq org-directory "../")
 
-;; Customize the HTML output
-(setq org-html-validation-link nil            ;; Don't show validation link
-      org-html-head-include-scripts nil       ;; Use our own scripts
-      org-html-head-include-default-style nil ;; Use our own styles
-      org-html-head "<link rel=\"stylesheet\" href=\"https://cdn.simplecss.org/simple.min.css\" />")
+;; Add function to generate Hugo markdown files
+(defun generate-hugo-notes ()
+  "Generate Hugo markdown files from Roam notes using ox-hugo."
+  (interactive)
+  (let ((org-files (directory-files org-directory t "\.org$")))
+    (dolist (org-file org-files)
+      (with-current-buffer (find-file-noselect org-file)
+        ;; Set the base directory for Hugo export
+        (setq org-hugo-base-dir "./content")
+        (message "Generating Hugo markdown file for %s..." org-file)
+        (org-hugo-export-to-md)))))
 
-;; Define the publishing project
-(setq org-publish-project-alist
-      '(("orgfiles"
-         :recursive t
-         :base-directory "./content"
-         :publishing-function org-html-publish-to-html
-         :publishing-directory "./public"
-         :with-author nil
-         :with-creator t
-         :with-toc t
-         :section-numbers nil
-         :time-stamp-file nil)
-        ("images"
-         :base-directory "./img"
-         :base-extension "png\\|jpg\\|svg\\|gif"
-         :publishing-directory "./public/img"
-         :publishing-function org-publish-attachment)
-        ("org-site:main" :components("orgfiles" "images"))))
+;; Generate Hugo markdown files from Roam notes
+(generate-hugo-notes)
 
-;; Generate the site output
-(org-publish-all t)
-
-(message "Build complete!")
+(message "Conversion to Hugo complete!")

@@ -59,13 +59,14 @@ public:
     for (int i = 0; i < nums.size(); i++)
       frequency[nums[i]]++;
 
-    for (auto it : frequency)
+    for (auto &it : frequency)
       buckets[it.second].push_back(it.first);
 
     for (auto rit = buckets.rbegin(); rit != buckets.rend(); rit++) {
       for (auto it : rit->second) {
         result.push_back(it);
-        if (result.size() == k)
+        k--;
+        if (k == 0)
           return result;
       }
     }
