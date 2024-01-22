@@ -1,0 +1,52 @@
+:PROPERTIES:
+:ID:       2fbdfb54-d819-4ed3-8c1b-8850777583d5
+:END:
+#+title: Backtracking
+#+filetags: :Backtracking:
+
+* INFO
+It's an Algorithm to permute string. Usefull to find all the possible permutations
+
+#+attr_html: :width 800px
+[[./img/Backtracking.png]]
+
+* EXAMPLE
+** Steps
++ Create a function which take the string, the =first= index and the =last= index:
+  - If =start= and =end= index are the same, end of the algorithm (print or return depends on what you wants)
+  - Otherwise, loop on each index between =start= and =end=:
+    + Swap string at index =start= and string at index =i= of loop
+    + Call the function with as =first= index =the first index + 1=
+    + Swap again string at index =start= and string at index =i= of loop
+** Code
+#+begin_src cpp :results output
+#include <iostream>
+#include <string>
+
+void backtrack(std::string &s, int idx, int N) {
+  if (idx == N)
+    std::cout << s << std::endl;
+  else {
+    for (int i = idx; i <= N; i++) {
+      std::swap(s[idx], s[i]);
+      backtrack(s, idx + 1, N);
+      // Reset
+      std::swap(s[idx], s[i]);
+    }
+  }
+}
+
+int main(int ac, char *av[]) {
+  std::string s = "ABC";
+  int n = s.length();
+  backtrack(s, 0, n - 1);
+}
+#+end_src
+
+#+RESULTS:
+: ABC
+: ACB
+: BAC
+: BCA
+: CBA
+: CAB

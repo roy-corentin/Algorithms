@@ -1,0 +1,12 @@
+:PROPERTIES:
+:ID:       34621968-f87d-4523-b89e-68d09687d49d
+:END:
+#+title: Depth-first Search
+#+filetags: :DepthFirstSearch:
+
+* INFO
+The deep path algorithm is a tree path algorithm, and more generally a graph path. He naturally describes himself in a recursive way.
+Its simplest application is to determine if there is a path from one summit to another
+
+#+attr_html: :width 600px
+[[./img/DFS.jpg]]

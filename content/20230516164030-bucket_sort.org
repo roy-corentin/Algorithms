@@ -1,0 +1,65 @@
+:PROPERTIES:
+:ID:       e9bdedc4-b936-42b7-b7a6-1083b3909ccc
+:END:
+#+title: Bucket Sort
+
+* BUCKET SORT
+=Bucket sort=, or =bin sort=, is a sorting algorithm that works by distributing the elements of an array into a number of buckets.
+Each bucket is then sorted individually, either using a different sorting algorithm, or by recursively applying the bucket sorting algorithm.
+
+** Pseudo Code
+#+begin_src js
+function bucketSort(array, k) is
+    buckets = new array of k empty lists
+    M = 1 + the maximum key value in the array
+    for i = 0 to length(array) do
+        insert array[i] into buckets[floor(k × array[i] / M)]
+    for i = 0 to k do
+        nextSort(buckets[i])
+    return the concatenation of buckets[0], ...., buckets[k]
+#+end_src
+
+** Python Example
+This code skip the part of sort each bucket and concatenate them all.
+
+Just here to see what looks like the buckets.
+
+#+begin_src python :results output
+from typing import List
+
+def bucketSort(array: List[int], k: int):
+    buckets: List[List[int]] = [[] for _ in range(k)]
+    M: int = max(array)+1;
+
+    for nb in array:
+        buckets[int(k*nb/M)].append(nb)
+    return buckets
+
+print(bucketSort([1, 23, 5, 34, 22, 6], 3))
+#+end_src
+
+#+RESULTS:
+: [[1, 5, 6], [23, 22], [34]]
+
+** Ruby Example
+This code skip the part of sort each bucket and concatenate them all.
+
+Just here to see what looks like the buckets.
+
+#+begin_src ruby :results output
+def bucket_sort(array, k)
+  buckets = []
+  m = array.max+1
+
+  k.times { |_| buckets << [] }
+  array.each do |nb|
+    buckets[k*nb/m] << nb
+  end
+  buckets
+end
+
+puts bucket_sort([1, 23, 5, 34, 22, 6], 3).inspect
+#+end_src
+
+#+RESULTS:
+: [[1, 5, 6], [23, 22], [34]]

@@ -1,0 +1,13 @@
+:PROPERTIES:
+:ID:       473ee769-750d-4c14-b63a-c4f0a9acd928
+:ROAM_ALIASES: "Bit Manipulation"
+:END:
+#+title: Bitwise Operation
+
+Logically, a bit-to-bit operation is a calculation manipulating the data directly at the level of the bits, according to a Boolean arithmetic
+
+Use in Programming Advanced to be *blazingly* fast
+
+* OPERATORS
+#+attr_html: :width 500px
+[[./img/BitwiseOperator.png]]

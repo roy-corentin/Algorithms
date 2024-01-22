@@ -1,0 +1,9 @@
+:PROPERTIES:
+:ID:       15819f6c-749a-4836-8654-db6f5ea2d26f
+:ROAM_ALIASES: "Regular Expression"
+:END:
+#+title: Regex
+
+* REGULAR EXPRESSION (REGEX)
+In Computer Science a regular expression or rational expression or normal expression or pattern is a string which describes, according to a precise syntax, a set of possible character strings.
+*Regular expressions* are also called *regex*.

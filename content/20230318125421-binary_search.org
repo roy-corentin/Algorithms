@@ -1,0 +1,82 @@
+:PROPERTIES:
+:ID:       9f29f570-ec48-4915-aa0f-c65d88638efe
+:END:
+#+title: Binary Search
+#+filetags: :BinarySearch:
+
+* INFO
+Binary Search called "Recherche Dichotomique" in French is a searching algorithm used in a sorted array by repeatedly dividing the search interval in half.
+
+#+attr_html: :width 500px
+[[./img/Binary_search_into_array.png]]
+
+* APPROACH
+** Find the Exact Value
+#+begin_src cpp
+class Solution {
+public:
+  int search(vector<int> &nums, int target) {
+    int leftPtr = 0;
+    int rightPtr = nums.size() - 1;
+
+    while (leftPtr <= rightPtr) {
+      int m = (leftPtr + rightPtr) / 2;
+
+      if (nums[m] == target)
+        return m;
+      else if (nums[m] < target)
+        leftPtr = m + 1;
+      else
+        rightPtr = m - 1;
+    }
+    return -1;
+  }
+};
+#+end_src
+
+** Find Upper bound
+#+begin_src cpp
+class Solution {
+public:
+  int search(vector<int> &nums, int target) {
+    int leftPtr = 0;
+    int rightPtr = nums.size();
+
+    while (leftPtr < rightPtr) {
+      int m = (leftPtr + rightPtr) / 2;
+
+      if (nums[m] == target)
+        return m;
+      else if (nums[m] < target)
+        leftPtr = m + 1;
+      else
+        rightPtr = m;
+    }
+    if (leftPtr > 0 && nums[leftPtr-1] == target)
+        return leftPtr - 1;
+    return -1;
+  }
+};
+#+end_src
+
+** Find Lower Bound
+#+begin_src cpp
+class Solution {
+public:
+  int search(vector<int> &nums, int target) {
+    int leftPtr = 0;
+    int rightPtr = nums.size();
+
+    while (leftPtr <= rightPtr) {
+      int m = (leftPtr + rightPtr) / 2;
+
+      if (nums[m] < target)
+        leftPtr = m + 1;
+      else
+        rightPtr = m - 1;
+    }
+    return leftPtr;
+  }
+};
+
+#+end_src

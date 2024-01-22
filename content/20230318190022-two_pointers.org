@@ -1,0 +1,12 @@
+:PROPERTIES:
+:ID:       a2a75b66-e141-4c83-99eb-9d108a5e5e22
+:END:
+#+title: Two Pointers
+#+filetags: :TwoPointers:
+
+* INFO
+The two pointers is a searching algorithm if you want at the same time:
+ + Search two elements in an array
+ + Search and do something in an array
+ + Keep in mind an index when moving another
+ + Ect...

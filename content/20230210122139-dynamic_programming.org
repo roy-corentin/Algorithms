@@ -1,0 +1,10 @@
+:PROPERTIES:
+:ID:       567b216e-d0bb-4145-b254-19ef4e88e7be
+:END:
+#+title: Dynamic Programming
+
+It's an advanced Algorithm
+In computer science, dynamic programming is an algorithmic method for solving optimization problems.
+The concept was introduced in the early 1950s by Richard Bellman. At the time, the term « programming » means planning and scheduling
+
+The most used techniques for dynamic programming are:
