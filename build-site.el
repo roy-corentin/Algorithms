@@ -16,7 +16,7 @@
 (require 'ox-hugo)
 
 ;; Set the directory for Roam notes
-(setq org-directory "../")
+(setq org-directory "./content")
 
 ;; Add function to generate Hugo markdown files
 (defun generate-hugo-notes ()
@@ -26,7 +26,7 @@
     (dolist (org-file org-files)
       (with-current-buffer (find-file-noselect org-file)
         ;; Set the base directory for Hugo export
-        (setq org-hugo-base-dir "./content")
+        (setq org-hugo-base-dir "../")
         (message "Generating Hugo markdown file for %s..." org-file)
         (org-hugo-export-to-md)))))
 

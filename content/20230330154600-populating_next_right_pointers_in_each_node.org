@@ -72,7 +72,7 @@ public:
 #+end_src
 
 ** BFS
-we'll use [[id:e6b94db2-7bd8-4e79-ad8c-3e13e890808f][Breadth-first Search]] method
+we'll use [[id:e6b94db2-7bd8-4e79-ad8c-3e13e890808f][Breadth-first Search]] Search method
 *** Steps
 + Return if =root= equal =NULL=
 + Push the =root= to the =queue=
