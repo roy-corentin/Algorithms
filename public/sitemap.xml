@@ -90,6 +90,8 @@
   </url><url>
     <loc>https://example.org/20230528143513-product_of_array_except_self/</loc>
   </url><url>
+    <loc>https://example.org/</loc>
+  </url><url>
     <loc>https://example.org/tags/backtracking/</loc>
   </url><url>
     <loc>https://example.org/posts/20230328185255-backtracking/</loc>
@@ -155,8 +157,6 @@
     <loc>https://example.org/posts/20230328225116-minimum_time_to_type_using_special_typewritter/</loc>
   </url><url>
     <loc>https://example.org/posts/20230325150824-move_zeroes/</loc>
-  </url><url>
-    <loc>https://example.org/</loc>
   </url><url>
     <loc>https://example.org/posts/20230413152606-palindrome_number/</loc>
   </url><url>
