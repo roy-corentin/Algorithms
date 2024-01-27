@@ -8,7 +8,7 @@
 It's an Algorithm to permute string. Usefull to find all the possible permutations
 
 #+attr_html: :width 800px
-[[./img/Backtracking.png]]
+[[../img/Backtracking.png]]
 
 * EXAMPLE
 ** Steps

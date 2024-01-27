@@ -10,4 +10,4 @@ Use in Programming Advanced to be *blazingly* fast
 
 * OPERATORS
 #+attr_html: :width 500px
-[[./img/BitwiseOperator.png]]
+[[../img/BitwiseOperator.png]]

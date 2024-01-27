@@ -8,7 +8,7 @@
 Binary Search called "Recherche Dichotomique" in French is a searching algorithm used in a sorted array by repeatedly dividing the search interval in half.
 
 #+attr_html: :width 500px
-[[./img/Binary_search_into_array.png]]
+[[../img/Binary_search_into_array.png]]
 
 * APPROACH
 ** Find the Exact Value

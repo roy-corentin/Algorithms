@@ -9,4 +9,4 @@ The deep path algorithm is a tree path algorithm, and more generally a graph pat
 Its simplest application is to determine if there is a path from one summit to another
 
 #+attr_html: :width 600px
-[[./img/DFS.jpg]]
+[[../img/DFS.jpg]]

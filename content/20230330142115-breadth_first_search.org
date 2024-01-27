@@ -8,4 +8,4 @@
 The width path algorithm allows the path of a graph or a tree as follows: we start by exploring a source node, then its successors, then the unexplored successors of successors, etc
 
 #+attr_html: :width 700px
-[[./img/BreadthFirst.png]]
+[[../img/BreadthFirst.png]]
