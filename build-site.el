@@ -18,8 +18,6 @@
 ;; Set the directory for Roam notes
 (setq org-directory "./content")
 
-org-roam-update-org-id-locations
-
 ;; Add function to generate Hugo markdown files
 (defun generate-hugo-notes ()
   "Generate Hugo markdown files from Roam notes using ox-hugo."
