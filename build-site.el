@@ -1,26 +1,31 @@
-(require 'package)
-
-(setq package-user-dir (expand-file-name "./.packages"))
+;; Define the package archives
 (setq package-archives '(("melpa" . "https://melpa.org/packages/")
                          ("elpa" . "https://elpa.gnu.org/packages/")))
 
 ;; Initialize the package system
 (package-initialize)
-(unless package-archive-contents
-  (package-refresh-contents))
 
-;; Install dependencies
-(package-install 'ox-hugo)
-(package-install 'org-roam)
+;; Ensure 'use-package' is available
+(unless (package-installed-p 'use-package)
+  (package-refresh-contents)
+  (package-install 'use-package))
 
-;; Load the installed packages
-(require 'ox-hugo)
-(require 'org-roam)
+;; Set up use-package for automatic package management
+(eval-when-compile
+  (require 'use-package))
 
-;; Set the directory for Roam notes
+;; Install and configure org-roam and ox-hugo
+(use-package org-roam
+  :ensure t
+  :config
+  (setq org-roam-directory "./content")
+  (org-roam-update-org-id-locations))
+
+(use-package ox-hugo
+  :ensure t)
+
+;; Mandatory
 (setq org-directory "./content")
-(setq org-roam-directory "./content")
-(org-roam-update-org-id-locations)
 
 ;; Add function to generate Hugo markdown files
 (defun generate-hugo-notes ()
