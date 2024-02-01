@@ -37,7 +37,7 @@ Since in binary each =bit= is a power of =2= wee can use this to know if it's a 
 If the number of =1= is equal to =1= so it's a power of 2
 
 *** Steps
-+ While our =n= is superior to 0:
++ While =n= is superior to 0:
   - If the first bit is =1= increase =count=
   - Use =shift right= to move all =bits= one on the right
 + If =count= equal =1= so it's a =power of 2=
@@ -64,7 +64,7 @@ If the number of =1= is equal to =1= so it's a power of 2
      &      == TRUE | COUNT += 1
 [0,0,0,0,1]
 
-COUNT = 1 | 16 is a power of 2
+COUNT = 1 (16 is a power of 2)
 #+end_src
 
 **** Example 5
@@ -81,8 +81,9 @@ COUNT = 1 | 16 is a power of 2
      &      == TRUE | COUNT += 1
 [0,0,0,0,1]
 
-COUNT = 2 | 5 is **not** a power of 2
+COUNT = 2 (5 is **not** a power of 2)
 #+end_src
+
 *** Code
 #+begin_src cpp
 class Solution {
@@ -110,16 +111,16 @@ Check if there is similarities between =n= and =n-1=
 
 **** Example 16
 #+begin_src markdown
-[1,0,0,0,0] | 16
+[1,0,0,0,0] = 16
      &      == FALSE | 16 is a power of 2
-[0,1,1,1,1] | 15
+[0,1,1,1,1] = 15
 #+end_src
 
 **** Example 5
 #+begin_src markdown
-[0,0,1,0,1] | 5
+[0,0,1,0,1] = 5
      &      == TRUE | 5 is **not** a power of 2
-[0,0,1,0,0] | 4
+[0,0,1,0,0] = 4
 #+end_src
 
 *** Code
