@@ -55,9 +55,6 @@ jobs:
             --minify \
             --baseURL "${{ steps.pages.outputs.base_url }}/"
 
-      - name: Move Picture
-        run: mv public/ox-hugo/* public/images/
-
       - name: Upload artifact
         uses: actions/upload-pages-artifact@v2
         with:
