@@ -11,12 +11,15 @@
 
 ;; Install dependencies
 (package-install 'ox-hugo)
+(package-install 'org-roam)
 
 ;; Load the installed packages
 (require 'ox-hugo)
 
 ;; Set the directory for Roam notes
 (setq org-directory "./content")
+(setq org-roam-directory org-directory)
+(org-roam-update-org-id-locations)
 
 ;; Add function to generate Hugo markdown files
 (defun generate-hugo-notes ()
