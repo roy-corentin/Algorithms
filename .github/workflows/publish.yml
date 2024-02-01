@@ -17,17 +17,8 @@ jobs:
     env:
       HUGO_VERSION: 0.122.0
     steps:
-      - name: Checkout
-        uses: actions/checkout@v4
-        with:
-          submodules: recursive
-          fetch-depth: 0
-
       - name: Install Emacs
         run: sudo apt install emacs-nox --yes
-
-      - name: Build the site
-        run: ./build.sh
 
       - name: Install Hugo CLI
         run: |
@@ -37,12 +28,21 @@ jobs:
       - name: Install Dart Sass
         run: sudo snap install dart-sass
 
+      - name: Checkout
+        uses: actions/checkout@v4
+        with:
+          submodules: recursive
+          fetch-depth: 0
+
       - name: Setup Pages
         id: pages
         uses: actions/configure-pages@v4
 
       - name: Install Node.js dependencies
         run: "[[ -f package-lock.json || -f npm-shrinkwrap.json ]] && npm ci || true"
+
+      - name: Build the site
+        run: ./build.sh
 
       - name: Build with Hugo
         env:
