@@ -15,10 +15,11 @@
 
 ;; Load the installed packages
 (require 'ox-hugo)
+(require 'org-roam)
 
 ;; Set the directory for Roam notes
 (setq org-directory "./content")
-(setq org-roam-directory org-directory)
+(setq org-roam-directory "./content")
 (org-roam-update-org-id-locations)
 
 ;; Add function to generate Hugo markdown files
