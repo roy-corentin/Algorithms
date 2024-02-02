@@ -5,7 +5,7 @@
 #+filetags: :BreadthFirstSearch:Problem:
 
 * [[id:f23824a1-0515-47c6-b386-21d83a9aec21][PROBLEM]]
-You are given an *m* x *n* grid where each cell can have one of three values:
+You are given a *m* x *n* grid where each cell can have one of three values:
 
 + =0= representing an empty cell,
 + =1= representing a fresh orange, or
