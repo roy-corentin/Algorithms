@@ -1,6 +1,5 @@
-#+title: Readme
+#+title: ALGORITHMS FOR PROBLEM SOLVING
 
-* ALGORITHMS FOR PROBLEM SOLVING
 This repository contains a collection of algorithms I've written to solve problems from sites like LeetCode and others.
 
 Each algorithm is implemented in a separate directory, with a brief explanation of the problem it solves, the approach taken to solve it and the code that I used to solve the problem.
