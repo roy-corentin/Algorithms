@@ -2,4 +2,4 @@ baseURL = 'https://example.org/'
 languageCode = 'en-us'
 title = 'Algorithm'
 theme = 'ananke'
-canonifyURL = true
+canonifyURLs = true
