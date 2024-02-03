@@ -2,7 +2,7 @@
 :ID:       2fbdfb54-d819-4ed3-8c1b-8850777583d5
 :END:
 #+title: Backtracking
-#+filetags: :Backtracking:
+#+filetags: :Algorithm:Backtracking:
 
 * INFO
 It's an Algorithm to permute string. Usefull to find all the possible permutations

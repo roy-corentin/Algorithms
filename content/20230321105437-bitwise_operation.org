@@ -3,6 +3,7 @@
 :ROAM_ALIASES: "Bit Manipulation"
 :END:
 #+title: Bitwise Operation
+#+filetags: :BitManipulation:Algorithm:
 
 Logically, a bit-to-bit operation is a calculation manipulating the data directly at the level of the bits, according to a Boolean arithmetic
 

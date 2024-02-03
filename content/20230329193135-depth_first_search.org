@@ -2,7 +2,7 @@
 :ID:       34621968-f87d-4523-b89e-68d09687d49d
 :END:
 #+title: Depth-first Search
-#+filetags: :DepthFirstSearch:
+#+filetags: :Algorithm:DepthFirstSearch:
 
 * INFO
 The deep path algorithm is a tree path algorithm, and more generally a graph path. He naturally describes himself in a recursive way.
