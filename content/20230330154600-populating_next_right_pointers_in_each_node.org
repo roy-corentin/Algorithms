@@ -2,7 +2,7 @@
 :ID:       017b94b1-5660-4e88-a49a-4c1cb0ce3883
 :END:
 #+title: Populating Next Right Pointers In Each Node
-#+filetags: :DepthFirstSearch:Problem:
+#+filetags: :DepthFirstSearch:BreadthFirstSearch:Problem:
 
 * [[id:f23824a1-0515-47c6-b386-21d83a9aec21][PROBLEM]]
 You are given a perfect binary tree where all leaves are on the same level, and every parent has two children. The binary tree has the following definition:
@@ -41,8 +41,8 @@ Explanation: Given the above perfect binary tree (Figure A), your function shoul
 We'll use [[id:34621968-f87d-4523-b89e-68d09687d49d][Depth-first Search]] method
 *** Steps
 + If =root= equal to =NULL= return
-+ =Left= next equal =Right= If =Left= and =Right= different of =NULL=
-+ Your =edge= (=Right= or =Left= if =NULL=) next equal to =current= node next =Left= or =Right= if =NULL=
++ =Left='s next equal =Right= If =Left= and =Right= are different of =NULL=
++ Your =edge= (=Right= or =Left= if =NULL=) next equal to =current= node's next =Left= or =Right= if =NULL=
 + Recursive on the =Left= node
 + Recursive on the =Right= node
 
@@ -76,13 +76,13 @@ we'll use [[id:e6b94db2-7bd8-4e79-ad8c-3e13e890808f][Breadth-first Search]] Sear
 *** Steps
 + Return if =root= equal =NULL=
 + Push the =root= to the =queue=
-+ While =queue= not empty:
++ While =queue= is not empty:
   - Initialize the =NextNode= to =NULL=
   - For each element on the queue:
     + =Current= equal pop on the =queue=
     + =Current= next equal =NextNode=
     + =NextNode= equal =Current=
-    + If =Current= has children push to the =queue= the =Right= and =Left= child *(order is very important)*
+    + If =Current= has children push to the =queue= the =Right= and/or =Left= child *(order is very important)*
 + return the =root=
 
 *** Code
@@ -102,10 +102,10 @@ public:
         q.pop();
         cur->next = nextNode;
         nextNode = cur;
-        if (cur->right) {
+        if (cur->right)
           q.push(cur->right);
+        if (cur->left)
           q.push(cur->left);
-        }
       }
     }
     return root;
