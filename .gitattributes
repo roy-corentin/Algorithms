@@ -1,2 +1,2 @@
-*.el linguist-detectable=false
-*.sh linguist-detectable=false
+*.el linguist-language=cpp
+*.sh linguist-language=cpp
