@@ -1,0 +1,225 @@
+:PROPERTIES:
+:ID:       dcdf8029-8e39-498a-9f20-06be773f5e26
+:END:
+#+title: Linked List
+#+filetags: :LinkedList:DataStructure:
+
+* INFORMATION
+In computer science, a linked list is *a linear collection of data elements whose order is not given by their physical placement in memory*.
+Instead, each element points to the next.
+It is a data structure consisting of a collection of nodes which together represent a sequence.
+
+[[../img/Singly-linked-list.svg]]
+
+There are several types of linked lists:
++ =Singly linked list=
++ =Doubly linked list=
++ =Circular linked list=
++ =Circular linked list=
+
+* IMPLEMENTATION
+** C Language
+*** =.h= File
+#+begin_src c
+#pragma once
+
+/* Types */
+
+#include <stdbool.h>
+#include <stdio.h>
+#include <stdlib.h>
+
+typedef struct node_s {
+  void *value;
+  struct node_s *next;
+} node_t, *list_t;
+
+/* Functions */
+
+/* Informations */
+
+unsigned int list_get_size(list_t list);
+bool list_is_empty(list_t list);
+
+typedef void (*value_displayer_t)(const void *value);
+
+void list_dump(list_t list, value_displayer_t val_disp);
+
+/* Modification */
+
+bool list_add_elem_at_front(list_t *front_ptr, void *elem);
+bool list_add_elem_at_back(list_t *front_ptr, void *elem);
+bool list_add_elem_at_position(list_t *front_ptr, void *elem,
+                               unsigned int position);
+
+bool list_del_elem_at_front(list_t *front_ptr);
+bool list_del_elem_at_back(list_t *front_ptr);
+bool list_del_elem_at_position(list_t *front_ptr, unsigned int position);
+
+void list_clear(list_t *front_ptr);
+
+/* Value Access */
+
+void *list_get_elem_at_front(list_t list);
+void *list_get_elem_at_back(list_t list);
+void *list_get_elem_at_position(list_t list, unsigned int position);
+#+end_src
+
+*** =.c= File
+#+begin_src c
+#include "include/list.h"
+
+unsigned int list_get_size(list_t list) {
+  unsigned int len_list = 0;
+  list_t tmp = list;
+
+  while (tmp != NULL) {
+    len_list++;
+    tmp = tmp->next;
+  }
+
+  return len_list;
+}
+
+bool list_is_empty(list_t list) { return (list == NULL); }
+
+node_t *new_node(void *elem) {
+  node_t *node = malloc(sizeof(node_t));
+
+  if (!node)
+    return false;
+  node->value = elem;
+  node->next = NULL;
+  return (node);
+}
+
+bool list_add_elem_at_front(list_t *front_ptr, void *elem) {
+  node_t *node = new_node(elem);
+
+  if (!node)
+    return false;
+  node->next = *front_ptr;
+  ,*front_ptr = node;
+  return true;
+}
+
+bool list_add_elem_at_back(list_t *front_ptr, void *elem) {
+  node_t *node = new_node(elem);
+  list_t tmp = *front_ptr;
+
+  if (!node)
+    return false;
+  if (*front_ptr == NULL) {
+    ,*front_ptr = node;
+    return true;
+  }
+
+  while (tmp->next != NULL)
+    tmp = tmp->next;
+
+  tmp->next = node;
+  return true;
+}
+
+bool list_add_elem_at_position(list_t *front_ptr, void *elem,
+                               unsigned int position) {
+  node_t *node = new_node(elem);
+  list_t tmp = *front_ptr;
+  unsigned int i = 0;
+
+  if (!node)
+    return false;
+  while (i != position) {
+    tmp = tmp->next;
+    if (tmp == NULL)
+      return false;
+    i++;
+  }
+  tmp->next = node;
+  return true;
+}
+
+bool list_del_elem_at_front(list_t *front_ptr) {
+  list_t tmp = *front_ptr;
+
+  ,*front_ptr = (*front_ptr)->next;
+  free(tmp);
+  return (*front_ptr == NULL);
+}
+
+bool list_del_elem_at_back(list_t *front_ptr) {
+  list_t tmp = *front_ptr;
+  list_t prev = tmp;
+
+  while (tmp->next != NULL) {
+    prev = tmp;
+    tmp = tmp->next;
+  }
+  prev->next = NULL;
+  free(tmp);
+  return true;
+}
+
+bool list_del_elem_at_position(list_t *front_ptr, unsigned int position) {
+  list_t tmp = *front_ptr;
+  list_t prev = tmp;
+  unsigned int i = 0;
+
+  if (*front_ptr == NULL)
+    return false;
+
+  while (i < position) {
+    prev = tmp;
+    tmp = tmp->next;
+    if (tmp == NULL)
+      return false;
+    i++;
+  }
+  prev->next = NULL;
+  free(tmp);
+  return true;
+}
+
+void list_clear(list_t *front_ptr) {
+  list_t tmp = *front_ptr;
+
+  while ((*front_ptr) != NULL) {
+    tmp = (*front_ptr)->next;
+    free((*front_ptr));
+    ,*front_ptr = tmp;
+  }
+}
+
+void list_dump(list_t list, value_displayer_t val_disp) {
+  list_t tmp = list;
+
+  while (tmp != NULL) {
+    val_disp(tmp->value);
+    tmp = tmp->next;
+  }
+}
+
+void *list_get_elem_at_front(list_t list) { return list->value; }
+
+void *list_get_elem_at_back(list_t list) {
+  list_t tmp = list;
+
+  while (tmp->next != NULL)
+    tmp = tmp->next;
+
+  return (tmp->value);
+}
+
+void *list_get_elem_at_position(list_t list, unsigned int position) {
+  list_t tmp = list;
+  unsigned int i = 0;
+
+  while (i < position) {
+    tmp = tmp->next;
+    if (tmp == NULL)
+      return NULL;
+    i++;
+  }
+  return (tmp->value);
+}
+#+end_src

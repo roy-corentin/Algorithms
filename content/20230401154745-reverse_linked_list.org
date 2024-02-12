@@ -5,7 +5,7 @@
 #+filetags: :LinkedList:Problem:
 
 * [[id:f23824a1-0515-47c6-b386-21d83a9aec21][PROBLEM]]
-Given the =head= of a singly linked list, reverse the list, and return the reversed list.
+Given the =head= of a singly [[id:dcdf8029-8e39-498a-9f20-06be773f5e26][Linked List]], reverse the list, and return the reversed list.
 
 ** Example1
 #+begin_src org

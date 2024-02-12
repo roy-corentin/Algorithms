@@ -2,7 +2,7 @@
 :ID:       60113df4-452d-4951-b440-d7c137f8c674
 :END:
 #+title: Valid Parentheses
-#+filetags: :Problem:
+#+filetags: :Stack:Problem:
 
 * [[id:f23824a1-0515-47c6-b386-21d83a9aec21][PROBLEM]]
 Given a string =s= containing just the characters ='('= , =')'= , ='{'= , ='}'= , ='['= and =']'=, determine if the input string is valid.
@@ -32,7 +32,7 @@ An input string is valid if:
 
 * SOLVING
 ** Steps
-1. Create a =Stack=
+1. Create a [[id:0ec9d187-8d78-46da-ba4d-7a234c09ff8e][Stack]]
 2. Browse the string:
    1) If characters is an =open parentheses= push to the =stack=
    2) If characters is an =close parentheses=

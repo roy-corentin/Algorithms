@@ -1,0 +1,98 @@
+:PROPERTIES:
+:ID:       0ec9d187-8d78-46da-ba4d-7a234c09ff8e
+:END:
+#+title: Stack
+#+filetags: :Stack:DataStructure:
+
+* INFORMATION
+*Stack* is a linear [[id:92421051-83c3-4117-9c25-7f4f9ecf2c0a][Data Structure]] that follows a particular order in which the operations are performed.
+The order may be *LIFO(Last In First Out)* or *FILO(First In Last Out)*.
+*LIFO* implies that the element that is inserted last, comes out first and *FILO* implies that the element that is inserted first, comes out last.
+
+[[../img/Stack-Data-Structure.png]]
+
+* IMPLEMENTATION
+** C Language
+*** =.h= file
+#+begin_src c
+typedef struct node_s {
+  void *value;
+  struct node_s *next;
+} node_t, *stack_t;
+
+/* informations */
+
+unsigned int stack_get_size(stack_t stack);
+bool stack_is_empty(stack_t stack);
+
+/* Modifications */
+
+bool stack_push(stack_t *stack_ptr, void *elem);
+bool stack_pop(stack_t *stack_ptr);
+void stack_clear(stack_t *stack_ptr);
+
+/* Access */
+
+void *stack_top(stack_t stack);
+#+end_src
+
+*** =.c= file
+#+begin_src c
+void *stack_top(stack_t stack) { return stack->value; }
+
+unsigned int stack_get_size(stack_t stack) {
+  unsigned int len_stack = 0;
+  stack_t tmp = stack;
+
+  while (tmp != NULL) {
+    len_stack++;
+    tmp = tmp->next;
+  }
+
+  return len_stack;
+}
+
+bool stack_is_empty(stack_t stack) { return (stack == NULL); }
+
+stack_t new_node_stack(void *elem) {
+  stack_t node = malloc(sizeof(stack_t));
+
+  if (!node)
+    return false;
+  node->value = elem;
+  node->next = NULL;
+  return (node);
+}
+
+bool stack_push(stack_t *stack_ptr, void *elem) {
+  stack_t node = new_node_stack(elem);
+
+  if (!node)
+    return false;
+  node->next = *stack_ptr;
+  ,*stack_ptr = node;
+  return true;
+}
+
+bool stack_pop(stack_t *stack_ptr) {
+  stack_t tmp = *stack_ptr;
+
+  if (*stack_ptr == NULL)
+    return false;
+  ,*stack_ptr = (*stack_ptr)->next;
+  free(tmp);
+  return true;
+}
+
+void stack_clear(stack_t *stack_ptr) {
+  stack_t tmp;
+
+  while ((*stack_ptr) != NULL) {
+    tmp = (*stack_ptr)->next;
+    free((*stack_ptr));
+    ,*stack_ptr = tmp;
+  }
+}
+
+void *stack_top(stack_t stack) { return stack->value; }
+#+end_src

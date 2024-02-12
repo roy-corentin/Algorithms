@@ -1,0 +1,10 @@
+:PROPERTIES:
+:ID:       92421051-83c3-4117-9c25-7f4f9ecf2c0a
+:END:
+#+title: Data Structure
+#+filetags: :DataStructure:
+
+* INFORMATION
+A data structure is a *specialized format for organizing, processing, retrieving and storing data*.
+There are several basic and advanced types of data structures, all designed to arrange data to suit a specific purpose.
+Data structures make it easy for users to access and work with the data they need in appropriate ways.

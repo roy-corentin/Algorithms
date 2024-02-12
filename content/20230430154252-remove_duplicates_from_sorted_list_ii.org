@@ -5,10 +5,11 @@
 #+filetags: :TwoPointers:Problem:
 
 * [[id:f23824a1-0515-47c6-b386-21d83a9aec21][PROBLEM]]
-Given the =head= of a sorted linked list, delete all nodes that have duplicate numbers, leaving only distinct numbers from the original list. Return the linked list *sorted* as well.
+Given the =head= of a sorted [[id:dcdf8029-8e39-498a-9f20-06be773f5e26][Linked List]], delete all nodes that have duplicate numbers, leaving only distinct numbers from the original list. Return the linked list *sorted* as well.
 
 ** Example1
 [[../img/linkedlist1.jpg]]
+
 #+begin_src org
 *Input*: head = [1,2,3,3,4,4,5]
 *Output*: [1,2,5]
