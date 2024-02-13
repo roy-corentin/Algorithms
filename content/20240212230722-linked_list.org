@@ -12,10 +12,10 @@ It is a data structure consisting of a collection of nodes which together repres
 [[../img/Singly-linked-list.svg]]
 
 There are several types of linked lists:
-+ =Singly linked list=
-+ =Doubly linked list=
-+ =Circular linked list=
-+ =Circular linked list=
++ *Singly linked list*
++ *Doubly linked list*
++ *Circular linked list*
++ *Circular doubly linked list*
 
 * IMPLEMENTATION
 ** C Language
