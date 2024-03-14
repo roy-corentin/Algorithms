@@ -2,7 +2,7 @@
 :ID:       dc248958-6b6c-46db-a3e6-f94cee7a5a75
 :END:
 #+title: Max Area Of Island Array
-#+filetags: :DepthFirstSearch:Problem:
+#+filetags: :DEPTHFIRSTSEARCH:PROBLEM:
 
 * [[id:f23824a1-0515-47c6-b386-21d83a9aec21][PROBLEM]]
 You are given an =m= x =n= binary matrix =grid=. An island is a group of =1='s (representing land) connected *4-directionally* (horizontal or vertical.) You may assume all four edges of the =grid= are surrounded by water.

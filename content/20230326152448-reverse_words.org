@@ -2,7 +2,7 @@
 :ID:       b9addc6d-f217-486a-ab98-f0fad16baa40
 :END:
 #+title: Reverse Words
-#+filetags: :TwoPointers:Problem:
+#+filetags: :TWOPOINTERS:PROBLEM:
 
 * [[id:f23824a1-0515-47c6-b386-21d83a9aec21][PROBLEM]]
 Given a string =s=, reverse the order of characters in each word within a sentence while still preserving whitespace and initial word order.

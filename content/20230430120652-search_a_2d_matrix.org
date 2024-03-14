@@ -2,7 +2,7 @@
 :ID:       70a939fc-9469-4183-85b5-b7ecc8d65045
 :END:
 #+title: Search a 2D Matrix
-#+filetags: :BinarySearch:Problem:
+#+filetags: :BINARYSEARCH:PROBLEM:
 
 * [[id:f23824a1-0515-47c6-b386-21d83a9aec21][PROBLEM]]
 You are given an =m x n= integer matrix =matrix= with the following two properties:

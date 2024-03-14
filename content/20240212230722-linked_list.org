@@ -2,7 +2,7 @@
 :ID:       dcdf8029-8e39-498a-9f20-06be773f5e26
 :END:
 #+title: Linked List
-#+filetags: :LinkedList:DataStructure:
+#+filetags: :LINKEDLIST:DATASTRUCTURE:
 
 * INFORMATION
 In computer science, a linked list is *a linear collection of data elements whose order is not given by their physical placement in memory*.

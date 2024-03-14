@@ -2,7 +2,7 @@
 :ID:       567b216e-d0bb-4145-b254-19ef4e88e7be
 :END:
 #+title: Dynamic Programming
-#+filetags: :DynamicProgramming:Algorithm:
+#+filetags: :DYNAMICPROGRAMMING:ALGORITHM:
 
 It's an advanced Algorithm
 In computer science, dynamic programming is an algorithmic method for solving optimization problems.

@@ -2,7 +2,7 @@
 :ID:       da0f4008-d987-437c-aabb-9d0b1486e2e3
 :END:
 #+title: Reverse Bits
-#+filetags: :BitManipulation:Problem:
+#+filetags: :BITMANIPULATION:PROBLEM:
 
 * [[id:f23824a1-0515-47c6-b386-21d83a9aec21][PROBLEM]]
 Reverse bits of a given 32 bits unsigned integer.

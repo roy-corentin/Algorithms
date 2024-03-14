@@ -2,7 +2,7 @@
 :ID:       058149ef-172f-4723-ab82-57cb4ef33b29
 :END:
 #+title: Remove Duplicates from Sorted List II
-#+filetags: :TwoPointers:Problem:
+#+filetags: :TWOPOINTERS:PROBLEM:
 
 * [[id:f23824a1-0515-47c6-b386-21d83a9aec21][PROBLEM]]
 Given the =head= of a sorted [[id:dcdf8029-8e39-498a-9f20-06be773f5e26][Linked List]], delete all nodes that have duplicate numbers, leaving only distinct numbers from the original list. Return the linked list *sorted* as well.

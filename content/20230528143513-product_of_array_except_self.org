@@ -2,7 +2,7 @@
 :ID:       50494c4a-669b-4935-be71-fdce31f5519e
 :END:
 #+title: Product of Array Except Self
-#+filetags: :Problem:
+#+filetags: :PROBLEM:
 
 * [[id:f23824a1-0515-47c6-b386-21d83a9aec21][PROBLEM]]
 Given an integer array =nums=, return an array =answer= such that =answer[i]= is equal to the product of all the elements of =nums= except =nums[i]=.
@@ -125,9 +125,9 @@ public:
     for (int i = 1; i < size; i++)
       result[i] = result[i - 1] * nums[i - 1];
 
-    int prev = 1;
+    int prev = nums[size - 1];
     // Second iteration
-    for (int i = size - 1; i >= 0; i--) {
+    for (int i = size - 2; i >= 0; i--) {
       result[i] *= prev;
       prev *= nums[i];
     }

@@ -2,7 +2,7 @@
 :ID:       c3091d23-c79b-45d0-9b28-a976731f9ce2
 :END:
 #+title: Is Power Of Two
-#+filetags: :Problem:BitManipulation:
+#+filetags: :PROBLEM:BITMANIPULATION:
 
 * [[id:f23824a1-0515-47c6-b386-21d83a9aec21][PROBLEM]]
 Given an integer =n=, return =true= if it is a power of two. Otherwise, return =false=.

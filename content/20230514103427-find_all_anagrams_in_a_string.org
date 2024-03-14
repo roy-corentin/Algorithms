@@ -2,7 +2,7 @@
 :ID:       4709f666-4ff5-4345-8fe3-5b5991cc38cb
 :END:
 #+title: Find All Anagrams in a String
-#+filetags: :SlidingWindow:Problem:
+#+filetags: :SLIDINGWINDOW:PROBLEM:
 
 * [[id:f23824a1-0515-47c6-b386-21d83a9aec21][PROBLEM]]
 Given two strings =s= and =p=, return an array of all the start indices of =p='s anagrams in =s=. You may return the answer in any order.

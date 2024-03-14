@@ -2,7 +2,7 @@
 :ID:       647c848a-8e9d-47b1-9e78-7b25e9b37ec8
 :END:
 #+title: Letter Case Permutation
-#+filetags: :Backtracking:Problem:
+#+filetags: :BACKTRACKING:PROBLEM:
 
 * [[id:f23824a1-0515-47c6-b386-21d83a9aec21][PROBLEM]]
 Given a string =s=, you can transform every letter individually to be lowercase or uppercase to create another string.

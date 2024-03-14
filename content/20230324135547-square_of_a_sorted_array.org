@@ -2,7 +2,7 @@
 :ID:       4c24edc9-d4a4-49f7-bac3-ed8a8d06de02
 :END:
 #+title: Square Of A Sorted Array
-#+filetags: :TwoPointers:Problem:
+#+filetags: :TWOPOINTERS:PROBLEM:
 
 * [[id:f23824a1-0515-47c6-b386-21d83a9aec21][PROBLEM]]
 Given an integer array nums sorted in non-decreasing order, return an array of the squares of each number sorted in non-decreasing order

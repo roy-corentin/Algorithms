@@ -2,7 +2,7 @@
 :ID:       5b608b30-04dc-4095-9d0e-d6a18e19f614
 :END:
 #+title: Move Zeroes
-#+filetags: :TwoPointers:Problem:
+#+filetags: :TWOPOINTERS:PROBLEM:
 
 * [[id:f23824a1-0515-47c6-b386-21d83a9aec21][PROBLEM]]
 Given an integer array =nums=, move all =0='s to the end of it while maintaining the relative order of the non-zero elements.

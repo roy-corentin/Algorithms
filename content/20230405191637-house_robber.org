@@ -2,7 +2,7 @@
 :ID:       8580087d-92ed-4de3-a327-be60ee27e794
 :END:
 #+title: House Robber
-#+filetags: :Problem:
+#+filetags: :PROBLEM:
 
 * [[id:f23824a1-0515-47c6-b386-21d83a9aec21][PROBLEM]]
 You are a professional robber planning to rob houses along a street. Each house has a certain amount of money stashed, the only constraint stopping you from robbing each of them is that adjacent houses have security systems connected and *it will automatically contact the police if two adjacent houses were broken into on the same night*.

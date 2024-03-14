@@ -2,7 +2,7 @@
 :ID:       60113df4-452d-4951-b440-d7c137f8c674
 :END:
 #+title: Valid Parentheses
-#+filetags: :Stack:Problem:
+#+filetags: :STACK:PROBLEM:
 
 * [[id:f23824a1-0515-47c6-b386-21d83a9aec21][PROBLEM]]
 Given a string =s= containing just the characters ='('= , =')'= , ='{'= , ='}'= , ='['= and =']'=, determine if the input string is valid.

@@ -2,7 +2,7 @@
 :ID:       84e07174-753e-4f7a-a6fb-16ee61cd04bc
 :END:
 #+title: Defuse The Bomb
-#+filetags: :Problem:
+#+filetags: :PROBLEM:
 * [[id:f23824a1-0515-47c6-b386-21d83a9aec21][PROBLEM]]
 You have a bomb to defuse, and your time is running out! Your informer will provide you with a circular array ~code~ of length of ~n~ and a key ~k~.
 

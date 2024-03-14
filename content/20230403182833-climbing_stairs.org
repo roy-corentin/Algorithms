@@ -2,7 +2,7 @@
 :ID:       7d717a6f-755b-4ea3-a8f4-97eea85496dc
 :END:
 #+title: Climbing Stairs
-#+filetags: :DynamicProgramming:Problem:
+#+filetags: :DYNAMICPROGRAMMING:PROBLEM:
 
 * [[id:f23824a1-0515-47c6-b386-21d83a9aec21][PROBLEM]]
 You are climbing a staircase. It takes n steps to reach the top.

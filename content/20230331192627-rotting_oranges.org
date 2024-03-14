@@ -2,7 +2,7 @@
 :ID:       f210bc7c-cbb1-43d5-9514-8860e9238bbc
 :END:
 #+title: Rotting Oranges
-#+filetags: :BreadthFirstSearch:Problem:
+#+filetags: :BREADTHFIRSTSEARCH:PROBLEM:
 
 * [[id:f23824a1-0515-47c6-b386-21d83a9aec21][PROBLEM]]
 You are given a *m* x *n* grid where each cell can have one of three values:

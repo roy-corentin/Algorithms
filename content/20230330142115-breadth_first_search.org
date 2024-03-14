@@ -2,7 +2,7 @@
 :ID:       e6b94db2-7bd8-4e79-ad8c-3e13e890808f
 :END:
 #+title: Breadth-first Search
-#+filetags: :Algorithm:BreadthFirstSearch:
+#+filetags: :ALGORITHM:BREADTHFIRSTSEARCH:
 
 * INFO
 The width path algorithm allows the path of a graph or a tree as follows: we start by exploring a source node, then its successors, then the unexplored successors of successors, etc

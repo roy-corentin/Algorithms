@@ -2,7 +2,7 @@
 :ID:       017b94b1-5660-4e88-a49a-4c1cb0ce3883
 :END:
 #+title: Populating Next Right Pointers In Each Node
-#+filetags: :DepthFirstSearch:BreadthFirstSearch:Problem:
+#+filetags: :DEPTHFIRSTSEARCH:BREADTHFIRSTSEARCH:PROBLEM:
 
 * [[id:f23824a1-0515-47c6-b386-21d83a9aec21][PROBLEM]]
 You are given a perfect binary tree where all leaves are on the same level, and every parent has two children. The binary tree has the following definition:

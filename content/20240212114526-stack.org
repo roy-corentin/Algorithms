@@ -2,7 +2,7 @@
 :ID:       0ec9d187-8d78-46da-ba4d-7a234c09ff8e
 :END:
 #+title: Stack
-#+filetags: :Stack:DataStructure:
+#+filetags: :STACK:DATASTRUCTURE:
 
 * INFORMATION
 *Stack* is a linear [[id:92421051-83c3-4117-9c25-7f4f9ecf2c0a][Data Structure]] that follows a particular order in which the operations are performed.

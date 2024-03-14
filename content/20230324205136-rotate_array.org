@@ -2,7 +2,7 @@
 :ID:       8401eeb9-54c3-4ecf-a553-79628e82cac5
 :END:
 #+title: Rotate Array
-#+filetags: :TwoPointers:Problem:
+#+filetags: :TWOPOINTERS:PROBLEM:
 
 * [[id:f23824a1-0515-47c6-b386-21d83a9aec21][PROBLEM]]
 Given an integer array =nums=, rotate the array to the right by =k= steps, where =k= is non-negative.

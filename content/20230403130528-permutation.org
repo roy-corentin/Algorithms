@@ -2,7 +2,7 @@
 :ID:       e425dc38-6408-41e1-a254-a5f44dbdbb80
 :END:
 #+title: Permutation
-#+filetags: :Backtracking:Problem:
+#+filetags: :BACKTRACKING:PROBLEM:
 
 * [[id:f23824a1-0515-47c6-b386-21d83a9aec21][PROBLEM]]
 Given an array =nums= of distinct integers, return all the possible permutations. You can return the answer in any order.

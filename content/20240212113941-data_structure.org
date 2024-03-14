@@ -2,7 +2,7 @@
 :ID:       92421051-83c3-4117-9c25-7f4f9ecf2c0a
 :END:
 #+title: Data Structure
-#+filetags: :DataStructure:
+#+filetags: :DATASTRUCTURE:
 
 * INFORMATION
 A data structure is a *specialized format for organizing, processing, retrieving and storing data*.

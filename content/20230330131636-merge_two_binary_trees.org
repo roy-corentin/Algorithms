@@ -2,7 +2,7 @@
 :ID:       41a07ef4-cd9d-496b-96ec-f357cca948cf
 :END:
 #+title: Merge Two Binary Trees
-#+filetags: :DepthFirstSearch:Problem:
+#+filetags: :DEPTHFIRSTSEARCH:PROBLEM:
 
 * [[id:f23824a1-0515-47c6-b386-21d83a9aec21][PROBLEM]]
 You are given two binary trees =root1= and =root2=.

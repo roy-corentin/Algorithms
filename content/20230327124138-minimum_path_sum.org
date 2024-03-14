@@ -2,7 +2,7 @@
 :ID:       da4d2efc-cbad-43fe-985c-345fa53e419b
 :END:
 #+title: Minimum Path Sum
-#+filetags: :DynamicProgramming:Problem:
+#+filetags: :DYNAMICPROGRAMMING:PROBLEM:
 
 * [[id:f23824a1-0515-47c6-b386-21d83a9aec21][PROBLEM]]
 Given a =m x n= =grid= filled with non-negative numbers, find a path from top left to bottom right, which minimizes the sum of all numbers along its path.

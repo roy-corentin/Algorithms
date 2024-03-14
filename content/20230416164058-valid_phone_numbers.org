@@ -2,7 +2,7 @@
 :ID:       68ae49c1-1445-410b-b196-86d87f174e79
 :END:
 #+title: Valid Phone Numbers
-#+filetags: :Problem:
+#+filetags: :PROBLEM:
 
 * [[id:f23824a1-0515-47c6-b386-21d83a9aec21][PROBLEM]]
 Given a text file =file.txt= that contains a list of phone numbers (one per line), write a one-liner bash script to print all valid phone numbers.

@@ -2,7 +2,7 @@
 :ID:       e9bdedc4-b936-42b7-b7a6-1083b3909ccc
 :END:
 #+title: Bucket Sort
-#+filetags: :Algorithm:
+#+filetags: :ALGORITHM:
 
 * BUCKET SORT
 =Bucket sort=, or =bin sort=, is a sorting algorithm that works by distributing the elements of an array into a number of buckets.

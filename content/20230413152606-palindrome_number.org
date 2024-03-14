@@ -2,7 +2,7 @@
 :ID:       2f146d57-a13d-4fdd-9d56-297b92ff8b01
 :END:
 #+title: Palindrome Number
-#+filetags: :Problem:
+#+filetags: :PROBLEM:
 
 * [[id:f23824a1-0515-47c6-b386-21d83a9aec21][PROBLEM]]
 Given an integer =x=, return =true= if =x= is a *palindrome*, and =false= otherwise.

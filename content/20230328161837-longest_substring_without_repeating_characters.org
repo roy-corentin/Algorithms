@@ -2,7 +2,7 @@
 :ID:       cfe6fd5b-60d3-45c6-914d-e1831b0cd940
 :END:
 #+title: Longest Substring Without Repeating Characters
-#+filetags: :Problem:
+#+filetags: :PROBLEM:
 
 * [[id:f23824a1-0515-47c6-b386-21d83a9aec21][PROBLEM]]
 Given a string =s=, find the length of the longest =substring= without repeating characters.

@@ -2,7 +2,7 @@
 :ID:       2711eb27-434d-427d-9185-205c28f83132
 :END:
 #+title: Matrix Distance Nearest 0
-#+filetags: :BreadthFirstSearch:Problem:
+#+filetags: :BREADTHFIRSTSEARCH:PROBLEM:
 
 * [[id:f23824a1-0515-47c6-b386-21d83a9aec21][PROBLEM]]
 Given an =m= x =n= binary matrix =mat=, return the distance of the nearest =0= for each cell.

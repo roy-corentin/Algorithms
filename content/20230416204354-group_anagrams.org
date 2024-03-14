@@ -2,7 +2,7 @@
 :ID:       189ad2e2-a539-4dcc-a2f9-c72604c5e9a3
 :END:
 #+title: Group Anagrams
-#+filetags: :Hash:Problem:
+#+filetags: :HASH:PROBLEM:
 
 * [[id:f23824a1-0515-47c6-b386-21d83a9aec21][PROBLEM]]
 Given an array of strings =strs=, group the anagrams together. You can return the answer in any order.

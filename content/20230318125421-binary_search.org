@@ -2,7 +2,7 @@
 :ID:       9f29f570-ec48-4915-aa0f-c65d88638efe
 :END:
 #+title: Binary Search
-#+filetags: :Algorithm:BinarySearch:
+#+filetags: :ALGORITHM:BINARYSEARCH:
 
 * INFO
 Binary Search called "Recherche Dichotomique" in French is a searching algorithm used in a sorted array by repeatedly dividing the search interval in half.

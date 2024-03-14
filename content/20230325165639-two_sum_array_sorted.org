@@ -2,7 +2,7 @@
 :ID:       f9a8470f-5ad0-4ee6-a272-795c258dfd3e
 :END:
 #+title: Two Sum || Array Sorted
-#+filetags: :TwoPointers:Problem:
+#+filetags: :TWOPOINTERS:PROBLEM:
 
 * [[id:f23824a1-0515-47c6-b386-21d83a9aec21][PROBLEM]]
 Given a *1-indexed* array of integers =numbers= that is already *sorted in non-decreasing order*, find two numbers such that they add up to a specific =target= number.

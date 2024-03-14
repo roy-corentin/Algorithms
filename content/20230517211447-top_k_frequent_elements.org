@@ -2,7 +2,7 @@
 :ID:       e3865320-e99a-4e0f-9cce-cd3cdb57b2f7
 :END:
 #+title: Top K Frequent Elements
-#+filetags: :BucketSort:Problem:
+#+filetags: :BUCKETSORT:PROBLEM:
 
 * [[id:f23824a1-0515-47c6-b386-21d83a9aec21][PROBLEM]]
 Given an integer array =nums= and an integer =k=, return the =k= most frequent elements. You may return the answer in any order.

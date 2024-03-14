@@ -2,7 +2,7 @@
 :ID:       16fc089c-d778-4f93-9a23-2b4b4267b85f
 :END:
 #+title: SubRectangleQueries
-#+filetags: :Problem:
+#+filetags: :PROBLEM:
 
 * [[id:f23824a1-0515-47c6-b386-21d83a9aec21][PROBLEM]]
 Implement the class =SubrectangleQueries= which receives a =rows x cols= rectangle as a matrix of integers in the constructor and supports two methods:
