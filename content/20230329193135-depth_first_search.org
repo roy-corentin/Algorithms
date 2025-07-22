@@ -1,5 +1,6 @@
 :PROPERTIES:
 :ID:       34621968-f87d-4523-b89e-68d09687d49d
+:ROAM_ALIASES: DFS
 :END:
 #+title: Depth-first Search
 #+filetags: :ALGORITHM:DEPTHFIRSTSEARCH:
@@ -10,3 +11,37 @@ Its simplest application is to determine if there is a path from one summit to a
 
 #+attr_html: :width 600px
 [[../img/DFS.jpg]]
+
+* Examples
+** ZIG
+#+begin_src zig
+  const std = @import("std");
+  const print = std.debug.print;
+
+  const Leaf = struct { value: u8, right: ?usize, left: ?usize };
+
+  pub fn main() !void {
+      const tree: Leaf = .{ .value = 0, .right = 1, .left = 2 };
+      const leaf1: Leaf = .{ .value = 1, .right = 3, .left = 4 };
+      const leaf2: Leaf = .{ .value = 2, .right = 5, .left = null };
+      const leaf3: Leaf = .{ .value = 3, .right = null, .left = null };
+      const leaf4: Leaf = .{ .value = 4, .right = null, .left = null };
+      const leaf5: Leaf = .{ .value = 5, .right = null, .left = null };
+      const leafs = [_]Leaf{ tree, leaf1, leaf2, leaf3, leaf4, leaf5 };
+
+      print("Dfs:\n", .{});
+      dfs(&tree, &leafs);
+      print("\nBfs:\n", .{});
+      try bfs(&tree, &leafs);
+  }
+
+  fn dfs(head: *const Leaf, indexes: *const [6]Leaf) void {
+      if (head.right) |right| {
+          dfs(&indexes.*[right], indexes);
+      }
+      if (head.left) |left| {
+          dfs(&indexes.*[left], indexes);
+      }
+      print("{d}\n", .{head.value});
+  }
+#+end_src

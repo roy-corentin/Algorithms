@@ -1,5 +1,6 @@
 :PROPERTIES:
 :ID:       e6b94db2-7bd8-4e79-ad8c-3e13e890808f
+:ROAM_ALIASES: BFS
 :END:
 #+title: Breadth-first Search
 #+filetags: :ALGORITHM:BREADTHFIRSTSEARCH:
@@ -9,3 +10,75 @@ The width path algorithm allows the path of a graph or a tree as follows: we sta
 
 #+attr_html: :width 700px
 [[../img/BreadthFirst.png]]
+
+* Examples
+** ZIG
+#+begin_src zig
+  const std = @import("std");
+
+  const Node = struct {
+      value: u8,
+      left: ?u8,
+      right: ?u8,
+  };
+
+  pub fn main() !void {
+      const nodes = [6]Node{ .{ .value = 6, .left = null, .right = null }, .{ .value = 5, .left = null, .right = null }, .{ .value = 4, .left = null, .right = null }, .{ .value = 3, .left = 1, .right = 0 }, .{ .value = 2, .left = 2, .right = null }, .{ .value = 1, .left = 4, .right = 3 } };
+      var queue = std.ArrayList(Node).init(std.heap.page_allocator);
+      defer queue.deinit();
+      try queue.append(nodes[5]);
+
+      while (queue.items.len > 0) {
+          printQueue(&queue);
+          for (0..queue.items.len) |_| {
+              const node = queue.swapRemove(0);
+              if (node.left) |index| try queue.append(nodes[index]);
+              if (node.right) |index| try queue.append(nodes[index]);
+          }
+      }
+  }
+
+  fn printQueue(queue: *std.ArrayList(Node)) void {
+      for (queue.items) |item| {
+          std.debug.print("{d} ", .{item.value});
+      }
+      std.debug.print("\n", .{});
+  }
+
+#+end_src
+** ZIG2
+#+begin_src zig
+  const Leaf = struct { value: u8, right: ?usize, left: ?usize };
+
+  pub fn main() !void {
+      const tree: Leaf = .{ .value = 0, .right = 1, .left = 2 };
+      const leaf1: Leaf = .{ .value = 1, .right = 3, .left = 4 };
+      const leaf2: Leaf = .{ .value = 2, .right = 5, .left = null };
+      const leaf3: Leaf = .{ .value = 3, .right = null, .left = null };
+      const leaf4: Leaf = .{ .value = 4, .right = null, .left = null };
+      const leaf5: Leaf = .{ .value = 5, .right = null, .left = null };
+      const leafs = [_]Leaf{ tree, leaf1, leaf2, leaf3, leaf4, leaf5 };
+
+      print("\nBfs:\n", .{});
+      try bfs(&tree, &leafs);
+  }
+
+  fn bfs(head: *const Leaf, indexes: *const [6]Leaf) !void {
+      var buffer: [@sizeOf(Leaf) * indexes.len]u8 = undefined;
+      var fba = std.heap.FixedBufferAllocator.init(&buffer);
+
+      const allocator = fba.allocator();
+      var queue = std.ArrayList(*const Leaf).init(allocator);
+      defer queue.deinit();
+      try queue.append(head);
+
+      while (queue.items.len > 0) {
+          for (0..queue.items.len) |_| {
+              const item = queue.pop() orelse unreachable;
+              if (item.right) |right| try queue.insert(0, &indexes[right]);
+              if (item.left) |left| try queue.insert(0, &indexes[left]);
+              print("{d}\n", .{item.value});
+          }
+      }
+  }
+#+end_src
